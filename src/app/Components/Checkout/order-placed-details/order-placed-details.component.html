@@ -1,0 +1,94 @@
+<!-- Outer container matching the implied light background of the image -->
+<div class="bg-fec00f40 flex justify-center min-h-screen pt-12 pb-12">
+    <!-- White inner container with shadow -->
+    <div class="w-full max-w-5xl bg-white p-4 lg:p-8 shadow-lg">
+
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <!--  for the main title as requested -->
+            <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl  mb-1">Order placed!</h1>
+            <!--  for all other text as requested -->
+            <p class="text-sm text-gray-500 ">A copy of your receipt has been sent to your email.</p>
+        </div>
+
+        <!-- Pink/Red Separator Bar -->
+        <div class="h-1 mb-2 bg-b37800"></div>
+
+        <!-- Order Items Container -->
+        <!-- No border top/bottom on this section in the image, but items have separators -->
+        <div class="py-0 space-y-2">
+            <!-- Loop through each order item -->
+            <div *ngFor="let item of orderItems" class="flex items-start py-2 border-b border-gray-200">
+                <!-- Image Container with light background (matches image) -->
+                <div class="w-20 h-20 shrink-0 mr-4" style="border-radius: 4px;">
+                    <img [src]="item.imageUrl" [alt]="item.name" class="w-full h-full object-contain p-2">
+                </div>
+
+                <!-- Item Details -->
+                <div class="pt-2">
+                    <!--  as requested -->
+                    <p class=" text-base">{{ item.name }}</p>
+                    <!--  as requested -->
+                    <p class=" text-sm text-gray-600">Size: {{ item.size }} | Metal: {{ item.metal }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total -->
+        <div class="flex justify-between items-center py-6 border-b border-gray-200 mt-4">
+            <!--  for all other text as requested. Added margin-left to match image alignment -->
+            <span class="text-xl  ml-4">Total:</span>
+            <!-- Format number with no decimal places, using currency symbol -->
+            <span class="text-xl ">{{ currencySymbol }} {{ totalAmount | number:'1.0-0' }}</span>
+        </div>
+
+        <!-- Customer Details (2-column layout) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 pt-6">
+
+            <!-- Left Column: Name, Email, Phone, Shipping -->
+            <div class="space-y-4">
+
+                <!-- Name -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Name:</span>
+                    <span class=" text-base">{{ customerDetails.name }}</span>
+                </div>
+                <!-- Email address -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Email address:</span>
+                    <!-- Email address is a link in the image -->
+                    <a [href]="'mailto:' + customerDetails.email" class=" text-base" style="color: #a54058; text-decoration: underline;">{{ customerDetails.email }}</a>
+                </div>
+                <!-- Phone number -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Phone number:</span>
+                    <span class=" text-base">{{ customerDetails.phoneNumber }}</span>
+                </div>
+                <!-- Shipping Address -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Shipping Address:</span>
+                    <!-- Use formatAddress to split lines -->
+                    <ng-container *ngFor="let line of formatAddress(customerDetails.shippingAddress)">
+                        <span class=" text-base block">{{ line }}</span>
+                    </ng-container>
+                </div>
+            </div>
+
+            <!-- Right Column: Paid With, Exp. Date, CVV, Billing -->
+            <div class="space-y-4">
+                <!-- Paid With -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Paid With:</span>
+                    <span class=" text-base">{{ customerDetails.paidWith }}</span>
+                </div>
+
+                <!-- Billing Address -->
+                <div>
+                    <span class=" text-gray-500 text-sm block">Billing Address:</span>
+                    <span class=" text-base">{{ customerDetails.billingAddress }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

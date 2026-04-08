@@ -1,0 +1,13 @@
+.clipped-box{
+  width: max-content;
+  padding: 8px 100px 8px 20px;
+  background: linear-gradient(90deg, #B5FC9F 0%, #F9FFF1 100%);
+  color: #323232;
+  clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0 100%, 0 0);
+}
+@media (max-width: 640px) {
+  .clipped-box {
+    padding: 6px 40px 6px 10px;
+    clip-path: polygon(100% 0%, 90% 50%, 100% 100%, 0 100%, 0 0);
+  }
+}

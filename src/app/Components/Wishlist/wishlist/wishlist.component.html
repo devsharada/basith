@@ -1,0 +1,72 @@
+<div class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+
+  <!-- breadcrumb -->
+  <app-breadcrumb [items]="[
+    { label: 'Home', link: '/home' },
+    { label: 'Wishlist' }
+  ]"></app-breadcrumb>
+
+  <ng-container *ngIf="products1.length > 0; else emptyWishlist">
+    <!-- Title section -->
+    <h2
+      class="capitalize text-xl/tight sm:text-2xl/tight md:text-3xl/tight lg:text-4xl/tight xl:text-5xl/tight font-normal text-center text-08503f">
+      Wishlist
+    </h2>
+
+    <div class="w-full mt-6 lg:mt-8 xl:mt-10">
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-2.5 md:gap-3">
+        <!-- product card -->
+        <div class="relative" *ngFor="let item of products1" @fadeAnimation>
+          <a [routerLink]="item.link">
+            <div class="bg-f8f8f8 rounded-lg">
+              <div class="w-full">
+                <img [src]="item.image" [alt]="item.alt" class="w-full aspect-square rounded-lg" />
+              </div>
+              <div class="p-2">
+                <div class="flex items-center justify-between gap-2">
+                  <!-- item price -->
+                  <p
+                    class="text-1c1c1c capitalize font-semibold text-xs sm:text-base lg:text-lg xl:text-xl text-center">
+                    {{ item.price }}</p>
+                </div>
+                <!-- item name -->
+                <p
+                  class="text-1c1c1c capitalize font-normal text-[10px] sm:text-xs/tight md:text-sm/tight lg:text-base/tight truncate mt-0.5">
+                  {{ item.name }}</p>
+              </div>
+            </div>
+          </a>
+          <!-- delete or remove product icon -->
+          <button (click)="removeItem(item.id)" class="absolute top-2 right-2 z-10 bg-white rounded-full p-1 shadow">
+            <svg class="size-7 cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M4.99997 8H6.5M6.5 8V18C6.5 19.1046 7.39543 20 8.5 20H15.5C16.6046 20 17.5 19.1046 17.5 18V8M6.5 8H17.5M17.5 8H19M9 5H15M9.99997 11.5V16.5M14 11.5V16.5"
+                  stroke-linecap="round" stroke-linejoin="round" stroke="#B37800"></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Empty Wishlist -->
+  <ng-template #emptyWishlist>
+    <div class="bg-faf7f0 rounded-lg flex flex-col items-center justify-center h-full px-2 sm:px-4 py-10 text-center">
+      <img src="assets/images/home/empty-wishlist.png" alt="Empty wishlist"
+        class="size-30 md:size-40 object-contain mb-8" />
+      <h2 class="text-xl lg:text-3xl text-1c1c1c font-normal mb-1">Your wishlist is empty</h2>
+      <p class="text-sm lg:text-base text-9d9d9d mb-8">Looks like you haven’t added anything yet.</p>
+
+      <a routerLink="/home"
+        class="relative overflow-hidden cursor-pointer block w-max py-2 xl:py-3 px-5 my-3 xl:mt-6 bg-b37800 text-white text-base lg:text-lg rounded-md text-center border border-b37800 transition-all duration-300 hover:scale-[1.02]
+  before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-white/20 before:skew-x-[-20deg] hover:before:left-full before:transition-all before:duration-500">
+        Continue Shopping</a>
+    </div>
+  </ng-template>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="w-full xl:max-w-7xl mx-auto bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <!-- Title -->
+  <h1 class="text-center text-b37800 text-3xl sm:text-4xl font-extrabold mb-10">
+    Blogs
+  </h1>
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <ng-container *ngFor="let post of blogPosts">
+      <a *ngIf="post.title; else imageOnly" [routerLink]="['/blogs', 'blog-details', post.title]"
+        [ngClass]="{ 'sm:col-span-2': post.type === 'full-width' }" class="cursor-pointer flex flex-col bg-white rounded-lg overflow-hidden shadow-sm
+           hover:shadow-md transition-all duration-200">
+        <!-- Image -->
+        <div class="relative w-full overflow-hidden rounded-md">
+          <img [src]="post.image" class="w-full object-contain" />
+
+          <span *ngIf="post.date"
+            class="absolute top-2 right-2 bg-b37800 text-white text-xs font-bold px-3 py-1 rounded-full">
+            {{ post.date }}
+          </span>
+        </div>
+
+        <!-- Text -->
+        <div class="p-3">
+          <h3 class="font-semibold text-b37800 text-sm sm:text-base lg:text-lg">
+            {{ post.title }}
+          </h3>
+          <p class="text-xs sm:text-sm lg:text-base mt-1 text-1c1c1c">
+            {{ post.subtitle }}
+          </p>
+        </div>
+      </a>
+      <!-- Image-only full width block -->
+      <ng-template #imageOnly>
+        <div class="sm:col-span-2">
+          <img [src]="post.image" class="w-full rounded-lg" />
+        </div>
+      </ng-template>
+
+    </ng-container>
+  </div>
+</div>

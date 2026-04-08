@@ -1,0 +1,185 @@
+<div class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <!-- breadcrumb -->
+  <app-breadcrumb [items]="[
+    { label: 'Home', link: '/home' },
+    { label: 'Contact Us' }
+  ]"></app-breadcrumb>
+
+  <!-- section title -->
+  <h1
+    class="mt-3 text-center capitalize text-b37800 font-normal text-lg/tight sm:text-2xl/tight lg:text-3xl/tight xl:text-4xl/tight">
+    Contact Us</h1>
+  <!-- contact div -->
+  <div class="w-full px-4 lg:px-16 mt-6 lg:mt-12">
+
+    <!-- Top section: Image + Form -->
+    <div class="sm:flex items-center justify-between gap-8">
+      <!-- Left: Image -->
+      <div class="w-full sm:w-1/2 rounded-xl overflow-hidden mb-3 sm:mb-0">
+        <img src="/assets/images/home/contact-us.png" alt="contact us" class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Right: Form -->
+      <div class="w-full sm:w-1/2 flex flex-col justify-center mt-8 sm:mt-0">
+        <form class="space-y-4">
+          <div class="relative">
+            <input type="text" [(ngModel)]="name" name="name"
+              class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-1c1c1c bg-f8f8f8 rounded-md border border-d9d8d8 appearance-none focus:outline-none focus:ring-0 focus:border-b37800 peer"
+              placeholder=" " />
+            <label
+              class="absolute text-base text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-left bg-f8f8f8 px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Name</label>
+          </div>
+
+          <div class="relative">
+            <input type="email" [(ngModel)]="email" name="email"
+              class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-1c1c1c bg-f8f8f8 rounded-md border border-d9d8d8 appearance-none focus:outline-none focus:ring-0 focus:border-b37800 peer"
+              placeholder=" " />
+            <label
+              class="absolute text-base text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-left bg-f8f8f8  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email
+              ID</label>
+          </div>
+
+          <div class="relative">
+            <input type="tel" [(ngModel)]="phone" name="phone"
+              class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-1c1c1c bg-f8f8f8 rounded-md border border-d9d8d8 appearance-none focus:outline-none focus:ring-0 focus:border-b37800 peer"
+              placeholder=" " />
+            <label
+              class="absolute text-base text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-left bg-f8f8f8  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone
+              No.</label>
+          </div>
+
+          <div class="relative">
+            <textarea [(ngModel)]="message" name="message" rows="4" placeholder=""
+              class="block px-2.5 pb-2 pt-4 w-full text-sm md:text-[15px] text-1c1c1c bg-f8f8f8 rounded-md border border-d9d8d8 appearance-none focus:outline-none focus:ring-0 focus:border-b37800 peer"></textarea>
+            <label
+              class="absolute text-base text-767676 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-left bg-f8f8f8  px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Message</label>
+          </div>
+
+          <button type="submit" (click)="submitForm()"
+            class="mt-6 cursor-pointer w-32 mx-auto block border border-b37800 bg-b37800 text-white text-lg md:text-xl py-2 px-5  hover:bg-white hover:text-1c1c1c transition rounded-lg">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="text-center mt-12">
+      <h2 class="text-xl md:text-2xl xl:text-3xl font-medium text-b37800 mb-1">Stay Connected With Us</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+      <!-- Email -->
+      <div class="col-span-1 border border-f8f8f8 rounded-lg p-6 text-center shadow-sm space-y-2">
+        <div class="text-3xl mb-4 size-16 xl:size-20 flex items-center justify-center bg-f8f8f8 rounded-full mx-auto">
+          <svg class="size-8 xl:size-11" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M45 9H9C6.525 9 4.5225 11.025 4.5225 13.5L4.5 40.5C4.5 42.975 6.525 45 9 45H45C47.475 45 49.5 42.975 49.5 40.5V13.5C49.5 11.025 47.475 9 45 9ZM45 18L27 29.25L9 18V13.5L27 24.75L45 13.5V18Z"
+              fill="#B37800" />
+          </svg>
+        </div>
+        <p class="font-normal font-marcellus text-b37800 text-xl xl:text-2xl">Email Us</p>
+        <p class="font-normal text-1c1c1c text-base xl:text-lg">info[at]sparkals[dot]com</p>
+        <p class="font-normal text-1c1c1c text-base xl:text-lg">We typically respond within 24 hours</p>
+      </div>
+
+      <!-- Call -->
+      <div class="col-span-1 border border-f8f8f8 rounded-lg p-6 text-center shadow-sm space-y-2">
+        <div class="text-3xl mb-4 size-16 xl:size-20 flex items-center justify-center bg-f8f8f8 rounded-full mx-auto">
+          <svg class="size-8 xl:size-11" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M45.0225 34.605C42.255 34.605 39.5775 34.155 37.08 33.345C36.6886 33.2132 36.2681 33.1939 35.8664 33.2894C35.4646 33.3848 35.0977 33.5912 34.8075 33.885L31.275 38.3175C24.9075 35.28 18.945 29.5425 15.7725 22.95L20.16 19.215C20.7675 18.585 20.9475 17.7075 20.7 16.92C19.8675 14.4225 19.44 11.745 19.44 8.9775C19.44 7.7625 18.4275 6.75 17.2125 6.75H9.4275C8.2125 6.75 6.75 7.29 6.75 8.9775C6.75 29.88 24.1425 47.25 45.0225 47.25C46.62 47.25 47.25 45.8325 47.25 44.595V36.8325C47.25 35.6175 46.2375 34.605 45.0225 34.605Z"
+              fill="#B37800" />
+          </svg>
+        </div>
+        <p class="font-normal font-marcellus text-b37800 text-xl xl:text-2xl">Call Us</p>
+        <p class="font-normal text-1c1c1c text-base xl:text-lg">91+ 85235655670</p>
+        <p class="font-normal text-1c1c1c text-base xl:text-lg">Mon–Fri, 9AM–6PM EST</p>
+      </div>
+
+      <!-- Visit -->
+      <div
+        class="col-span-1 sm:col-span-2 md:col-span-1 border border-f8f8f8 rounded-lg p-6 text-center shadow-sm space-y-2">
+        <div class="text-3xl mb-4 size-16 xl:size-20 flex items-center justify-center bg-f8f8f8 rounded-full mx-auto">
+          <svg class="size-8 xl:size-11" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M26.5003 25.3959C25.0361 25.3959 23.6319 24.8143 22.5965 23.7789C21.5611 22.7435 20.9795 21.3393 20.9795 19.8751C20.9795 18.4109 21.5611 17.0066 22.5965 15.9713C23.6319 14.9359 25.0361 14.3542 26.5003 14.3542C27.9645 14.3542 29.3688 14.9359 30.4041 15.9713C31.4395 17.0066 32.0212 18.4109 32.0212 19.8751C32.0212 20.6001 31.8784 21.318 31.6009 21.9878C31.3235 22.6576 30.9168 23.2662 30.4041 23.7789C29.8915 24.2916 29.2829 24.6982 28.6131 24.9757C27.9432 25.2531 27.2253 25.3959 26.5003 25.3959ZM26.5003 4.41675C22.4005 4.41675 18.4686 6.04539 15.5696 8.94439C12.6706 11.8434 11.042 15.7753 11.042 19.8751C11.042 31.4688 26.5003 48.5834 26.5003 48.5834C26.5003 48.5834 41.9587 31.4688 41.9587 19.8751C41.9587 15.7753 40.33 11.8434 37.431 8.94439C34.532 6.04539 30.6001 4.41675 26.5003 4.41675Z"
+              fill="#B37800" />
+          </svg>
+        </div>
+        <p class="font-normal font-marcellus text-b37800 text-xl xl:text-2xl">Visit Us</p>
+        <p class="font-normal text-1c1c1c text-base xl:text-lg">Marvel Feugo, opp. to season mall, Hadapsar, Pune,
+          Maharashtra 411036</p>
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="text-center mt-10">
+      <p class="font-normal font-marcellus text-1c1c1c text-xl xl:text-2xl">Follow For More</p>
+      <div class="flex justify-center space-x-2 lg:space-x-6 xl:space-x-10 mt-6 mb-4 text-xl">
+        <a href="#">
+          <svg class="size-7 lg:size-9" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_291_3897)">
+              <path
+                d="M58 29C58 12.9837 45.0163 0 29 0C12.9837 0 0 12.9837 0 29C0 43.4745 10.6048 55.4721 24.4688 57.6477V37.3828H17.1055V29H24.4688V22.6109C24.4688 15.3428 28.7984 11.3281 35.4225 11.3281C38.5944 11.3281 41.9141 11.8945 41.9141 11.8945V19.0312H38.2573C34.655 19.0312 33.5312 21.2669 33.5312 23.5625V29H41.5742L40.2885 37.3828H33.5312V57.6477C47.3952 55.4721 58 43.4745 58 29Z"
+                fill="#B37800" />
+            </g>
+            <defs>
+              <clipPath id="clip0_291_3897">
+                <rect width="58" height="58" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="size-7 lg:size-9" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_291_3895)">
+              <path
+                d="M18.2462 52.5642C40.1276 52.5642 52.0992 34.4313 52.0992 18.7113C52.0992 18.2015 52.0879 17.6804 52.0652 17.1706C54.394 15.4865 56.4038 13.4004 58 11.0104C55.8311 11.9754 53.5283 12.6056 51.1703 12.8795C53.6531 11.3913 55.5121 9.05333 56.4027 6.29904C54.067 7.68328 51.5126 8.65975 48.8491 9.18658C47.0545 7.27971 44.6817 6.01713 42.0976 5.59406C39.5134 5.17099 36.8619 5.61098 34.5529 6.846C32.2439 8.08103 30.406 10.0423 29.3235 12.4266C28.2409 14.8109 27.974 17.4854 28.5639 20.0367C23.8344 19.7993 19.2075 18.5707 14.9833 16.4305C10.7591 14.2903 7.03176 11.2862 4.04301 7.6131C2.52397 10.2321 2.05914 13.3312 2.74299 16.2807C3.42685 19.2301 5.20807 21.8084 7.72465 23.4917C5.83535 23.4318 3.98744 22.9231 2.33359 22.0077V22.155C2.3319 24.9035 3.28207 27.5677 5.02258 29.6948C6.76309 31.8219 9.18653 33.2806 11.8809 33.823C10.1308 34.3018 8.29396 34.3716 6.51254 34.0269C7.27285 36.3906 8.75214 38.4579 10.7439 39.9404C12.7358 41.4229 15.1407 42.2465 17.6232 42.2964C13.4087 45.6069 8.20259 47.4026 2.84336 47.3941C1.89294 47.3926 0.943464 47.3344 0 47.2196C5.4444 50.7125 11.7777 52.5676 18.2462 52.5642Z"
+                fill="#B37800" />
+            </g>
+            <defs>
+              <clipPath id="clip0_291_3895">
+                <rect width="58" height="58" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="size-7 lg:size-9" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_291_3890)">
+              <path
+                d="M29.002 5.22227C36.7504 5.22227 37.668 5.25625 40.7152 5.39219C43.5473 5.5168 45.0766 5.99258 46.0961 6.38906C47.4441 6.91016 48.4184 7.54453 49.4266 8.55273C50.4461 9.57227 51.0691 10.5352 51.5902 11.8832C51.9867 12.9027 52.4625 14.4434 52.5871 17.2641C52.7231 20.3227 52.757 21.2402 52.757 28.9773C52.757 36.7258 52.7231 37.6434 52.5871 40.6906C52.4625 43.5227 51.9867 45.052 51.5902 46.0715C51.0691 47.4195 50.4348 48.3938 49.4266 49.402C48.407 50.4215 47.4441 51.0445 46.0961 51.5656C45.0766 51.9621 43.5359 52.4379 40.7152 52.5625C37.6566 52.6984 36.7391 52.7324 29.002 52.7324C21.2535 52.7324 20.3359 52.6984 17.2887 52.5625C14.4566 52.4379 12.9273 51.9621 11.9078 51.5656C10.5598 51.0445 9.58555 50.4102 8.57734 49.402C7.55781 48.3824 6.93477 47.4195 6.41367 46.0715C6.01719 45.052 5.54141 43.5113 5.4168 40.6906C5.28086 37.632 5.24688 36.7145 5.24688 28.9773C5.24688 21.2289 5.28086 20.3113 5.4168 17.2641C5.54141 14.432 6.01719 12.9027 6.41367 11.8832C6.93477 10.5352 7.56914 9.56094 8.57734 8.55273C9.59688 7.5332 10.5598 6.91016 11.9078 6.38906C12.9273 5.99258 14.468 5.5168 17.2887 5.39219C20.3359 5.25625 21.2535 5.22227 29.002 5.22227ZM29.002 0C21.1289 0 20.1434 0.0339844 17.0508 0.169922C13.9695 0.305859 11.8512 0.804297 10.016 1.51797C8.10156 2.26562 6.48164 3.25117 4.87305 4.87109C3.25313 6.47969 2.26758 8.09961 1.51992 10.0027C0.80625 11.8492 0.307813 13.9562 0.171875 17.0375C0.0359375 20.1414 0.00195312 21.127 0.00195312 29C0.00195312 36.873 0.0359375 37.8586 0.171875 40.9512C0.307813 44.0324 0.80625 46.1508 1.51992 47.9859C2.26758 49.9004 3.25313 51.5203 4.87305 53.1289C6.48164 54.7375 8.10156 55.7344 10.0047 56.4707C11.8512 57.1844 13.9582 57.6828 17.0395 57.8187C20.132 57.9547 21.1176 57.9887 28.9906 57.9887C36.8637 57.9887 37.8492 57.9547 40.9418 57.8187C44.0231 57.6828 46.1414 57.1844 47.9766 56.4707C49.8797 55.7344 51.4996 54.7375 53.1082 53.1289C54.7168 51.5203 55.7137 49.9004 56.45 47.9973C57.1637 46.1508 57.6621 44.0438 57.7981 40.9625C57.934 37.8699 57.968 36.8844 57.968 29.0113C57.968 21.1383 57.934 20.1527 57.7981 17.0602C57.6621 13.9789 57.1637 11.8605 56.45 10.0254C55.7363 8.09961 54.7508 6.47969 53.1309 4.87109C51.5223 3.2625 49.9023 2.26562 47.9992 1.5293C46.1527 0.815625 44.0457 0.317188 40.9645 0.18125C37.8605 0.0339844 36.875 0 29.002 0Z"
+                fill="#B37800" />
+              <path
+                d="M29.002 14.0923C20.7777 14.0923 14.1055 20.7646 14.1055 28.9888C14.1055 37.213 20.7777 43.8853 29.002 43.8853C37.2262 43.8853 43.8984 37.213 43.8984 28.9888C43.8984 20.7646 37.2262 14.0923 29.002 14.0923ZM29.002 38.6517C23.6664 38.6517 19.3391 34.3243 19.3391 28.9888C19.3391 23.6532 23.6664 19.3259 29.002 19.3259C34.3375 19.3259 38.6648 23.6532 38.6648 28.9888C38.6648 34.3243 34.3375 38.6517 29.002 38.6517Z"
+                fill="#B37800" />
+              <path
+                d="M47.9652 13.5144C47.9652 15.4401 46.402 16.9921 44.4875 16.9921C42.5617 16.9921 41.0098 15.4288 41.0098 13.5144C41.0098 11.5886 42.573 10.0366 44.4875 10.0366C46.402 10.0366 47.9652 11.5999 47.9652 13.5144Z"
+                fill="#B37800" />
+            </g>
+            <defs>
+              <clipPath id="clip0_291_3890">
+                <rect width="58" height="58" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="#">
+          <svg class="size-7 lg:size-9" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_291_3887)">
+              <path
+                d="M53.7047 0H4.28008C1.9125 0 -0.00195312 1.86914 -0.00195312 4.18008V53.8086C-0.00195312 56.1195 1.9125 58 4.28008 58H53.7047C56.0723 58 57.998 56.1195 57.998 53.8199V4.18008C57.998 1.86914 56.0723 0 53.7047 0ZM17.2055 49.4246H8.59609V21.7387H17.2055V49.4246ZM12.9008 17.9664C10.1367 17.9664 7.90508 15.7348 7.90508 12.982C7.90508 10.2293 10.1367 7.99766 12.9008 7.99766C15.6535 7.99766 17.8852 10.2293 17.8852 12.982C17.8852 15.7234 15.6535 17.9664 12.9008 17.9664ZM49.4227 49.4246H40.8246V35.9668C40.8246 32.7609 40.768 28.6262 36.35 28.6262C31.8754 28.6262 31.1957 32.1266 31.1957 35.7402V49.4246H22.609V21.7387H30.8559V25.5223H30.9691C32.1133 23.3473 34.9227 21.0477 39.1027 21.0477C47.8141 21.0477 49.4227 26.7797 49.4227 34.2336V49.4246Z"
+                fill="#B37800" />
+            </g>
+            <defs>
+              <clipPath id="clip0_291_3887">
+                <rect width="58" height="58" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,660 @@
+<!-- ./admin-markets.component.html -->
+<div class="p-1 bg-gray-50 min-h-screen">
+
+    <!-- CHANGE: Added flex-col on mobile, flex-row on small screens and up, space-y-4 for vertical stack on mobile -->
+     <header class="flex justify-between items-center mb-6">
+
+        <!-- Mobile Left Item (Sidebar/Menu Icon) - HIDDEN ON DESKTOP -->
+        <button class="sm:hidden text-gray-500 hover:text-gray-800 p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Search Bar: HIDDEN on mobile, original restricted width on sm and up -->
+        <div class="hidden sm:flex items-center w-full max-w-sm bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200">
+            <!-- Search Icon -->
+            <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+            </svg>
+            <!-- Input Field -->
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
+            />
+        </div>
+
+        <!-- User Profile Area (Top Right on Mobile, Right on Desktop) -->
+        <!-- Used 'flex items-center space-x-6' to ensure the original desktop layout remains -->
+        <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200 border border-gray-400">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140037.png" alt="User" class="object-cover w-full h-full" />
+                </div>
+                <!-- Hide the name on mobile, show on sm/desktop -->
+                <span class="hidden sm:inline text-sm font-medium">(User)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- H1 (Desktop) / Mobile Title (New Position) -->
+    <!-- Mobile: Aligns Title left, below the Menu Icon -->
+    <h1 class="text-2xl font-bold mb-3 sm:mb-6 px-1 sm:px-0">
+        <span class="block sm:hidden text-xl">Analytics</span>
+        <span class="hidden sm:block">Analytics</span>
+    </h1>
+
+    <!-- Mobile-Only Search Bar (Full Width, with original styling) -->
+    <!-- This div replicates the look of the desktop search bar but forces full width on mobile -->
+    <div class="sm:hidden flex items-center w-full bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200 mb-6 -mt-2.5">
+      <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+      </svg>
+      <input
+        type="text"
+        placeholder="Search..."
+        class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
+      />
+    </div>
+
+    <!-- Filter Bar -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 py-2 space-y-4 md:space-y-0">
+    <div class="flex items-center space-x-3 text-sm rounded-md bg-[#FFFFFF] p-2">
+      <button class=" bg-032b76 text-white px-2 xl:px-4 py-1.5 rounded-lg font-medium shadow-md">Last 30 Days</button>
+      <span class="text-gray-600 flex items-center">
+        Live Visitors
+        <span class="w-2 h-2 bg-[#25C470] rounded-full ml-2 mr-1 animate-pulse"></span>
+        <span class="text-[#25C470] font-semibold">2.5k</span>
+      </span>
+    </div>
+    <!-- Responsive Date Range + Buttons -->
+    <div class="sm:flex items-center gap-3 text-sm">
+
+      <!-- Date Range Selector -->
+      <div
+        class="mb-2 sm:mb-0 flex items-center p-2 bg-white rounded-lg border border-gray-300 shadow-sm w-full sm:w-auto justify-center sm:justify-start">
+        <!-- Start Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pr-1 w-22.5 sm:w-28 cursor-pointer"
+          value="2025-09-20" title="Select Start Date" />
+
+        <span class="text-gray-500 font-light mx-1">–</span>
+
+        <!-- End Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pl-1 w-22.5 sm:w-28 cursor-pointer"
+          value="2025-10-09" title="Select End Date" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
+        <button class="bg-032b76 text-white px-4 py-1.5 rounded-lg font-medium shadow-md w-full sm:w-auto">
+          Apply
+        </button>
+        <button class="text-032b76 py-1.5 rounded-lg font-medium hover:bg-blue-50 w-full sm:w-auto">
+          Clear Filter
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Search and Action Bar (Made responsive to stack correctly on mobile) -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+        <!-- Search Box (Full width on mobile, then margin) -->
+        <div class="relative w-full sm:grow sm:mr-4 order-1 sm:order-0">
+            <input type="text" placeholder="Search"
+                class="pl-4 pr-4 py-2 bg-white border border-gray-300 rounded-md text-sm w-full focus:outline-none focus:ring-1 focus:ring-032b76">
+        </div>
+
+        <!-- Right: Action Buttons (Mobile: Stacks on top of tabs, full width/wrapped) -->
+        <div
+            class="flex items-center space-x-3 text-sm whitespace-nowrap flex-wrap sm:flex-nowrap justify-start sm:justify-end w-full sm:w-auto order-2 sm:order-0">
+
+            <!-- Export, Filter -->
+            <button
+                class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 mb-2 sm:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Export
+            </button>
+            <button
+                class="flex items-center px-3 py-1.5 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 mb-2 sm:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707v7l-4-4v-3.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                </svg>
+                Filter
+            </button>
+            <!-- Add Product -->
+            <button
+                class="flex items-center px-4 py-1.5 bg-032b76 text-white rounded-md font-medium mb-2 sm:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                Add Product
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Analytics Grid (Made to stack/wrap on mobile/tablet) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
+
+        <!-- 1. Dashboard Chart (Bar Chart) -->
+        <!-- Outer Container (Simulates a card for the chart) -->
+        <div class="col-span-12 lg:col-span-8 bg-white p-3 rounded-lg shadow-sm border border-gray-200">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-semibold text-[#153372]">Dashboard</h1>
+                <a href="#"
+                    class="flex items-center text-sm font-medium text-[#153372] hover:text-blue-700 transition duration-150 whitespace-nowrap">
+                    <span class="hidden sm:inline">Advanced Report</span>
+                    <span class="sm:hidden">Report</span>
+                    <!-- Right Arrow Icon -->
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Chart Area Container (Flex container for Y-Axis and Chart bars) -->
+            <div class="flex h-64 overflow-x-auto">
+
+                <!-- Y-Axis Labels (Fixed Width for alignment) -->
+                <div class="flex flex-col justify-between text-right text-gray-400 text-sm w-10 pb-4 shrink-0">
+                    <span>5000</span>
+                    <span>4000</span>
+                    <span>2000</span>
+                    <span>0</span>
+                </div>
+
+                <!-- Main Chart Grid and Bars (Min-width added for horizontal scroll) -->
+                <div class="flex flex-1 relative ml-3 min-w-125">
+                    <!-- Simulated X and Y Axes (Very faint lines or just implied) -->
+
+                    <!-- Bars Container (Uses justify-between for even spacing) -->
+                    <div class="flex justify-between items-end w-full h-full pb-4">
+
+                        <!-- Helper array of bar heights (normalized to 1-100 for height %) -->
+                        <ng-container *ngFor="let item of [
+                            { h: '67', s: false, l: '20' }, { h: '92', s: false, l: '22' },
+                            { h: '79', s: false, l: '24' }, { h: '81', s: false, l: '26' },
+                            { h: '65', s: false, l: '28' }, { h: '77', s: false, l: '30' },
+                            { h: '56', s: false, l: '02' },
+                            { h: '100', s: true, l: '04' },
+                            { h: '73', s: false, l: '06' }, { h: '44', s: false, l: '08' },
+                            { h: '96', s: false, l: '10' }, { h: '79', s: false, l: '12' },
+                            { h: '69', s: false, l: '14' }, { h: '83', s: false, l: '16' }
+                        ]">
+                            <div class="flex flex-col items-center justify-end h-full">
+                                <!-- Bar container for the selected state (highlighted background) -->
+                                <div class="flex flex-col items-center justify-end w-4 sm:w-8 h-full rounded-t-xl transition duration-100"
+                                    [class.bg-blue-50]="item.s" [class.rounded-lg]="item.s">
+
+                                    <!-- Bar Line (with rounded top) -->
+                                    <div class="w-1.5 rounded-full" [class.bg-[#FF9933]]="!item.s"
+                                        [class.bg-[#153372]]="item.s" [style.height.%]="item.h">
+                                    </div>
+
+                                    <!-- Bar Base Line (Faint gray line to the X-Axis) -->
+                                    <div class="w-0.5 h-3 bg-gray-200"></div>
+                                </div>
+
+                                <!-- X-Axis Label -->
+                                <span class="text-xs mt-2" [class.text-[#153372]]="item.s"
+                                    [class.font-semibold]="item.s" [class.text-gray-700]="!item.s">
+                                    {{ item.l }}
+                                </span>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 2. Cart (Donut Chart) -->
+        <!-- Stacks below Dashboard Chart on mobile/tablet -->
+        <div class="col-span-12 lg:col-span-4 bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-semibold text-[#153372]">Cart</h1>
+                <button
+                    class="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center text-xs text-gray-500 hover:border-[#4F7FFF] hover:text-[#4F7FFF] transition duration-150">
+                    i
+                </button>
+            </div>
+
+            <!-- Chart & Stats Container -->
+            <div class="flex flex-col items-center">
+
+                <!-- Circular Progress Chart Container (Centered) -->
+                <div class="relative w-48 h-48 mb-10 flex items-center justify-center">
+                    <!-- SVG for the Progress Arc and Gradient Background -->
+                    <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="gradientCart" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F5F7FA;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#E9EDF5;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#gradientCart)" stroke-width="8" />
+                        <!-- The Progress Bar Arc (38% Dark Blue) -->
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#153372" stroke-width="8"
+                            stroke-dasharray="95.5 251.327" stroke-linecap="round"
+                            class="transition-all duration-1000 ease-out" />
+                    </svg>
+
+                    <!-- Inner White Circle with Percentage -->
+                    <div class="w-32 h-32 rounded-full bg-white flex items-center justify-center shadow-lg">
+                        <span class="text-3xl font-bold text-[#153372]">38%</span>
+                    </div>
+
+                    <!-- Progress End Cap Dot -->
+                    <div class="absolute w-4 h-4 rounded-full bg-[#4F7FFF] border-2 border-white shadow-md"
+                        style="top: 79%; left: 19%;">
+                    </div>
+                </div>
+
+                <!-- Abandoned Cart Stats (Aligned to the bottom) -->
+                <div class="w-full">
+                    <!-- Stat Row 1: Abandoned Cart Count (Bold, dark text) -->
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-base font-semibold text-[#153372]">Abandoned Cart</span>
+                        <span class="text-base font-semibold text-[#153372]">720</span>
+                    </div>
+
+                    <!-- Stat Row 2: Abandoned Revenue (Gray, smaller text) -->
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-sm font-medium text-gray-500">Abandoned Revenue</span>
+                        <span class="text-sm font-medium text-gray-700">₹5,900</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Revenue by Device (Donut Chart) -->
+        <!-- Stacks side-by-side on tablet/desktop, full width on mobile -->
+        <div class="col-span-12 lg:col-span-6 bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-xl font-semibold text-[#153372]">Revenue by device</h1>
+                <a href="#"
+                    class="flex items-center text-sm font-medium text-[#153372] hover:text-blue-700 transition duration-150">
+                    <span class="hidden sm:inline">More</span>
+                    <span class="sm:hidden">Details</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Chart & Legend Container -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-8 sm:space-y-0 sm:space-x-8">
+
+                <!-- Donut Chart Container -->
+                <div class="relative w-48 h-48 flex items-center justify-center shrink-0">
+
+                    <!-- SVG for the Donut Segments -->
+                    <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                        <!-- Segments (Using a simplified single path approach for responsiveness) -->
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#4F7FFF" stroke-width="20"
+                            stroke-dasharray="64.4 251.327" stroke-dashoffset="0" />
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#A8C4FF" stroke-width="20"
+                            stroke-dasharray="17.6 251.327" stroke-dashoffset="-64.4" />
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#153372" stroke-width="20"
+                            stroke-dasharray="44.0 251.327" stroke-dashoffset="-82.0" />
+                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#F7931E" stroke-width="20"
+                            stroke-dasharray="125.3 251.327" stroke-dashoffset="-126.0" />
+                    </svg>
+
+                    <!-- Inner White Circle with Percentage -->
+                    <div class="absolute w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-inner">
+                        <span class="text-2xl font-bold text-[#153372]">64%</span>
+                    </div>
+                </div>
+
+                <!-- Legend (Stacked vertically on mobile, keeps its 2-column grid layout inside its container) -->
+                <div
+                    class="grid grid-cols-2 gap-y-3 gap-x-8 w-full max-w-sm text-sm border-t sm:border-t-0 pt-4 sm:pt-0 border-gray-100">
+
+                    <!-- Item 1: Desktop -->
+                    <div class="flex flex-col space-y-2 col-span-2 sm:col-span-1">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 rounded-full bg-[#F7931E]"></span>
+                                <span class="text-gray-700 font-medium">Desktop</span>
+                            </div>
+                            <span class="text-[#153372] font-semibold">64.2%</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Tablet -->
+                    <div class="flex flex-col space-y-2 col-span-2 sm:col-span-1">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 rounded-full bg-[#4F7FFF]"></span>
+                                <span class="text-gray-700 font-medium">Tablet</span>
+                            </div>
+                            <span class="text-[#153372] font-semibold">15.3%</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Mobile -->
+                    <div class="flex flex-col space-y-2 col-span-2 sm:col-span-1">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 rounded-full bg-[#153372]"></span>
+                                <span class="text-gray-700 font-medium">Mobile</span>
+                            </div>
+                            <span class="text-[#153372] font-semibold">48.6%</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Unknown -->
+                    <div class="flex flex-col space-y-2 col-span-2 sm:col-span-1">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 rounded-full bg-[#A8C4FF]"></span>
+                                <span class="text-gray-700 font-medium">Unknown</span>
+                            </div>
+                            <span class="text-[#153372] font-semibold">8.6%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Traffic (Line Chart) -->
+        <!-- Stacks side-by-side on tablet/desktop, full width on mobile -->
+        <div class="col-span-12 lg:col-span-6 bg-white p-3 rounded-2xl shadow-md border border-gray-100">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-semibold text-[#153372]">Traffic</h1>
+                <a href="#"
+                    class="flex items-center text-sm font-medium text-[#153372] hover:text-blue-700 transition duration-150 whitespace-nowrap">
+                    <span class="hidden sm:inline">More</span>
+                    <span class="sm:hidden">Details</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Metrics (Responsive Grid) -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <!-- Store Visits -->
+                <div class="relative bg-white rounded-xl p-4 border border-gray-100"
+                    style="box-shadow: 0px 10.45px 27.87px 0px #3326AE14;">
+                    <span class="absolute top-2 right-3 text-[13px] font-semibold text-[#279F51]">+22%</span>
+                    <p class="text-sm text-gray-500 font-medium mb-1">Store Visits</p>
+                    <span class="text-3xl font-bold text-gray-900">8950</span>
+                </div>
+
+                <!-- Visitors -->
+                <div class="relative bg-white rounded-xl p-4 border border-gray-100"
+                    style="box-shadow: 0px 10.45px 27.87px 0px #3326AE14;">
+                    <span class="absolute top-2 right-3 text-[13px] font-semibold text-[#C0CEF8]">-24%</span>
+                    <p class="text-sm text-gray-500 font-medium mb-1">Visitors</p>
+                    <span class="text-3xl font-bold text-gray-900">1520</span>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <p class="text-xs text-gray-500 mb-2">Jan 16 – Jan 30 store visits chart</p>
+            <div class="relative h-40 w-full">
+                <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="w-full h-full">
+                    <!-- Area gradient -->
+                    <defs>
+                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#032B76" stop-opacity="0.15" />
+                            <stop offset="100%" stop-color="#032B76" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Filled area -->
+                    <path d="M0,25 C20,8 40,12 60,20 C80,30 100,18 100,18 L100,40 L0,40 Z" fill="url(#chartGradient)" />
+
+                    <!-- Thin line -->
+                    <path d="M0,25 C20,8 40,12 60,20 C80,30 100,18 100,18" stroke="#032B76" stroke-width="0.8"
+                        fill="none" />
+
+                    <!-- Highlight dot -->
+                    <circle cx="60" cy="20" r="1.5" fill="#fff" stroke="#032B76" stroke-width="0.8" />
+                </svg>
+
+                <!-- Tooltip (moved slightly above for space) -->
+                <div
+                    class="absolute left-[58%] top-[28%] bg-[#032B76] text-white text-xs font-semibold rounded-md px-2 py-1 shadow-sm transform -translate-x-1/2">
+                    2.5k
+                </div>
+
+                <!-- X-axis labels -->
+                <div class="absolute bottom-[-1.2rem] left-0 right-0 flex justify-between text-xs text-gray-400 px-1">
+                    <span>16</span>
+                    <span>18</span>
+                    <span>20</span>
+                    <span>24</span>
+                    <span>26</span>
+                    <span>30</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 5. Bestsellers -->
+        <!-- Stacks side-by-side on tablet/desktop, full width on mobile -->
+        <div class="col-span-12 lg:col-span-6 bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center mb-4 font-sub text-sm">
+                <h1 class="text-xl font-semibold text-[#153372]">Bestsellers</h1>
+                <a href="#"
+                    class="flex items-center text-sm font-medium text-[#153372] hover:text-blue-700 transition duration-150 whitespace-nowrap">
+                    <span class="hidden sm:inline">More</span>
+                    <span class="sm:hidden">Details</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Bestsellers Table (Horizontal scroll on mobile if necessary) -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 text-sm font-sub">
+                    <thead class="text-gray-500 text-xs tracking-wider">
+                        <tr>
+                            <th class="py-2 text-left font-medium min-w-37.5">Product</th>
+                            <th class="py-2 text-left font-medium min-w-20">Price</th>
+                            <th class="py-2 text-left font-medium min-w-20">Sold</th>
+                            <th class="py-2 text-right font-medium min-w-20">Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-gray-700">
+                        <tr *ngFor="let item of bestsellers">
+                            <td class="py-2 flex items-center space-x-2 whitespace-nowrap">
+                                <img [src]="item.image" alt="Product" class="w-8 h-8 object-contain rounded-full">
+                                <span class="text-xs">{{ item.name }}</span>
+                            </td>
+                            <td class="py-2 whitespace-nowrap font-medium">{{ item.price }}</td>
+                            <td class="py-2 whitespace-nowrap">{{ item.sold }}</td>
+                            <td class="py-2 text-right whitespace-nowrap text-green-600 font-medium">{{ item.profit }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 6. Sales Forecast -->
+        <!-- Stacks side-by-side on tablet/desktop, full width on mobile -->
+        <div class="col-span-12 lg:col-span-6 bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-semibold text-[#153372]">Sales forecast</h1>
+                <a href="#"
+                    class="flex items-center text-sm font-medium text-[#153372] hover:text-blue-700 transition duration-150 whitespace-nowrap">
+                    <span class="hidden sm:inline">More</span>
+                    <span class="sm:hidden">Details</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- 2x2 Grid for Forecast Cards (Responsive Grid) -->
+            <div class="grid grid-cols-2 gap-4">
+
+                <!-- 1. Revenue Card -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center h-full">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-500">Revenue</span>
+                            <span class="text-2xl font-bold text-[#153372] mt-1">+24.2%</span>
+                        </div>
+                        <div class="relative w-20 h-10">
+                            <svg class="w-full h-full" viewBox="0 0 106 40" preserveAspectRatio="none">
+                                <path fill="none" stroke="#F7931E" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" d="M 0,30 C 20,5 35,35 60,10 C 70,0 80,25 103,15" />
+                                <circle cx="103" cy="15" r="3" fill="#F7931E" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Net Profit Card -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center h-full">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-500">Net Profit</span>
+                            <span class="text-2xl font-bold text-[#153372] mt-1">-2.5%</span>
+                        </div>
+                        <div class="relative w-20 h-10">
+                            <svg class="w-full h-full" viewBox="0 0 106 40" preserveAspectRatio="none">
+                                <path fill="none" stroke="#153372" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" d="M 0,30 C 30,0 70,0 103,30" />
+                                <circle cx="103" cy="30" r="3" fill="#153372" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Orders Card -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center h-full">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-500">Orders</span>
+                            <span class="text-2xl font-bold text-[#153372] mt-1">+32.8%</span>
+                        </div>
+                        <div class="relative w-20 h-10">
+                            <svg class="w-full h-full" viewBox="0 0 106 40" preserveAspectRatio="none">
+                                <path fill="none" stroke="#4F7FFF" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" d="M 0,35 C 10,10 30,30 50,15 C 60,10 75,30 103,10" />
+                                <circle cx="103" cy="10" r="3" fill="#4F7FFF" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Visitors Card -->
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100">
+                    <div class="flex justify-between items-center h-full">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-500">Visitors</span>
+                            <span class="text-2xl font-bold text-[#153372] mt-1">+60%</span>
+                        </div>
+                        <div class="relative w-20 h-10">
+                            <svg class="w-full h-full" viewBox="0 0 106 40" preserveAspectRatio="none">
+                                <path fill="none" stroke="#A8C4FF" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" d="M 0,30 C 10,10 30,25 50,20 C 60,15 75,30 103,15" />
+                                <circle cx="103" cy="15" r="3" fill="#A8C4FF" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 7. Latest Orders -->
+        <div class="col-span-12 bg-white p-3 rounded-lg shadow-sm border border-gray-200 mt-6">
+            <div class="flex justify-between items-center mb-4 font-sub text-sm">
+                <h1 class="text-xl font-semibold text-[#153372]">Latest Orders</h1>
+                <button class="text-gray-500 hover:text-gray-700">More</button>
+            </div>
+
+            <!-- Latest Orders Table (Horizontal scroll on mobile) -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 text-sm font-sub">
+                    <thead class="text-gray-500 text-xs tracking-wider">
+                        <tr>
+                            <th class="py-2 text-left font-medium min-w-37.5">Products</th>
+                            <th class="py-2 text-left font-medium min-w-15">QTY</th>
+                            <th class="py-2 text-left font-medium min-w-25">Date</th>
+                            <th class="py-2 text-left font-medium min-w-25">Revenue</th>
+                            <th class="py-2 text-left font-medium min-w-25">Net Profit</th>
+                            <th class="py-2 text-left font-medium min-w-25">Status</th>
+                            <th class="py-2 text-left font-medium min-w-17.5">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 text-gray-700">
+                        <tr *ngFor="let item of latestOrders">
+                            <td class="py-3 flex items-center space-x-3 whitespace-nowrap w-full">
+                                <img [src]="item.image" alt="Product" class="w-8 h-8 object-contain rounded-full">
+                                <span class="text-sm font-medium">{{ item.name }}</span>
+                            </td>
+                            <td class="py-3 whitespace-nowrap">{{ item.qty }}</td>
+                            <td class="py-3 whitespace-nowrap">{{ item.date }}</td>
+                            <td class="py-3 whitespace-nowrap">{{ item.revenue }}</td>
+                            <td class="py-3 whitespace-nowrap">{{ item.netProfit }}</td>
+                            <td class="py-3 whitespace-nowrap">
+                                <span [ngClass]="getStatusClasses(item.status)"
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+                                    {{ item.status }}
+                                </span>
+                            </td>
+                            <td class="py-3 whitespace-nowrap text-gray-500 flex space-x-2">
+                                <!-- Edit Button -->
+                                <button class="hover:text-gray-900 cursor-pointer">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt="Edit"
+                                        class="w-4 h-4 object-contain" />
+                                </button>
+
+                                <!-- Delete Button -->
+                                <button class="hover:text-gray-900 cursor-pointer">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/10995/10995755.png" alt="Delete"
+                                        class="w-4 h-4 object-contain" />
+                                </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

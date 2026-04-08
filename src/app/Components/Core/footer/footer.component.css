@@ -1,0 +1,25 @@
+/* Custom background color class for the footer with the exact gradient */
+.footer-bg-gradient {
+  background: linear-gradient(360deg, #792D3E 2.95%, #602331 38.59%, #461A24 100%);
+}
+
+/* Base Poppins font for the entire component */
+:host {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Custom class for the NexShine logo font */
+.font-italiana {
+    font-family: 'Italiana', serif;
+}
+
+/* Enforce desktop height constraint */
+.footer-height-desktop {
+    min-height: 380px; 
+}
+
+/* Ensure smooth transition for accordions */
+.accordion-content {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}

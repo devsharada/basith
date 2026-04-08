@@ -1,0 +1,147 @@
+<!-- OVERLAY -->
+<div
+  class="fixed inset-0 bg-transparent bg-opacity-50 z-40 transition-opacity duration-300 ease-in-out"
+  [ngClass]="{ 'opacity-100 visible': isOpen, 'opacity-0 invisible': !isOpen }"
+  (click)="onClose()"
+></div>
+
+<!-- SIDEBAR -->
+<aside
+  class="fixed top-0 right-0 h-full w-full max-w-sm sm:max-w-md bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col"
+  [style.transform]="isOpen ? 'translateX(0)' : 'translateX(100%)'"
+>
+
+  <!-- HEADER -->
+  <header class="px-4 py-4 border-b border-gray-200 flex items-center bg-white shrink-0">
+    <!-- Back Arrow Icon -->
+    <button (click)="goBack()" class="text-gray-800 mr-4" aria-label="Go back">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2004/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+    </button>
+    <h1 class="text-base font-normal text-gray-800">Enjoy Shopping !!</h1>
+  </header>
+
+  <!-- BODY: CART ITEMS -->
+  <div class="grow overflow-y-auto">
+
+    <!-- CART ITEMS SECTION -->
+    <div class="divide-y divide-gray-200">
+      <div *ngFor="let item of cartItems; let i = index" class="p-4 flex justify-between items-start">
+
+        <!-- Left Side: Image and Details -->
+        <div class="flex items-start gap-4">
+          <!-- Image Container -->
+          <div class="w-20 h-20 shrink-0 rounded-lg">
+            <!-- Placeholder for the actual image. -->
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+              class="w-full h-full object-contain p-2"
+            />
+          </div>
+
+          <!-- Product Details -->
+          <div class="flex flex-col pt-1">
+            <h2 class="text-sm lg:text-base font-normal text-1c1c1c mb-1 leading-snug">{{ item.name }}</h2>
+            <p class="text-sm text-gray-500 mb-1">
+              <span class="mr-3">Size : {{ item.size }}</span>
+              <span>Metal : {{ item.metal }}</span>
+            </p>
+
+            <!-- Quantity Selector -->
+            <div class="flex items-center text-sm mt-1">
+              <button
+                  (click)="updateQuantity(item, -1)"
+                  class="text-gray-400 hover:text-gray-600 font-light pr-2"
+                  aria-label="Decrease quantity"
+              >
+                  &minus;
+              </button>
+              <span class="text-sm text-gray-800 font-normal pr-2">
+                  {{ item.quantity }}
+              </span>
+              <button
+                  (click)="updateQuantity(item, 1)"
+                  class="text-gray-400 hover:text-gray-600 font-light"
+                  aria-label="Increase quantity"
+              >
+                  +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Price and Remove Button -->
+        <div class="flex flex-col items-end justify-between h-full">
+          <!-- Remove Button (X) -->
+          <button
+            (click)="removeItem(item.id)"
+            class="text-gray-400 hover:text-red-500 transition cursor-pointer shrink-0"
+            aria-label="Remove item"
+          >
+            <svg class="size-5 cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M4.99997 8H6.5M6.5 8V18C6.5 19.1046 7.39543 20 8.5 20H15.5C16.6046 20 17.5 19.1046 17.5 18V8M6.5 8H17.5M17.5 8H19M9 5H15M9.99997 11.5V16.5M14 11.5V16.5"
+                  stroke-linecap="round" stroke-linejoin="round" stroke="#B37800"></path>
+              </g>
+            </svg>
+          </button>
+
+          <!-- Price (positioned to be near the top of its content column) -->
+          <div class="text-sm lg:text-base font-normal text-gray-800 mt-2">
+            <!-- Indian Rupee Symbol with space -->
+            ₹ {{ item.price | number: '1.0-0' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER: SUMMARY & CHECKOUT -->
+  <footer class="p-4 pt-6 shrink-0">
+
+    <!-- Price Breakdown -->
+    <div class="space-y-3 pb-6 border-t border-gray-200">
+
+      <!-- Sub Total -->
+      <div class="flex justify-between items-center text-gray-800 mt-2">
+        <span class="text-base font-normal">Sub Total</span>
+        <span class="text-base font-normal">₹ {{ subtotal | number: '1.0-0' }}</span>
+      </div>
+
+      <!-- Estimated Shipping -->
+      <div class="flex justify-between items-center text-gray-800">
+        <span class="text-base font-normal">Estimated Shipping</span>
+        <span class="text-base font-normal">₹ {{ estimatedShipping | number: '1.0-0' }}</span>
+      </div>
+
+      <!-- Estimate Total -->
+      <div class="flex justify-between items-center pt-1 text-gray-800">
+        <span class="text-base font-normal">Estimate Total</span>
+        <span class="text-base font-normal">₹ {{ estimateTotal | number: '1.0-0' }}</span>
+      </div>
+
+    </div>
+
+    <!-- Coupon Link -->
+    <div class="py-4">
+      <a href="#" class="text-[#B9445E] text-sm hover:underline">
+        Have a coupon code ?
+      </a>
+    </div>
+
+    <!-- Continue to Checkout Button -->
+   <button
+  (click)="goToOrderDetails()"
+  class="cursor-pointer w-full py-3 bg-b37800 text-white font-medium rounded-lg shadow-md hover:bg-opacity-90 transition duration-150 text-lg"
+>
+  Continue to Checkout
+</button>
+
+  </footer>
+
+</aside>

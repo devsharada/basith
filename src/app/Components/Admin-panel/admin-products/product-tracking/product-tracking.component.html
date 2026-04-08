@@ -1,0 +1,354 @@
+<div class="min-h-screen bg-gray-50  pb-12">
+    <div class="p-1 bg-gray-50 min-h-screen">
+
+        <!-- HEADER STRUCTURE: Menu Icon Left, User Icon Right on Mobile. Desktop is ORIGINAL. -->
+        <!-- CHANGE: Added flex-col on mobile, flex-row on small screens and up, space-y-4 for vertical stack on mobile -->
+     <header class="flex justify-between items-center mb-6">
+
+        <!-- Mobile Left Item (Sidebar/Menu Icon) - HIDDEN ON DESKTOP -->
+        <button class="sm:hidden text-gray-500 hover:text-gray-800 p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Search Bar: HIDDEN on mobile, original restricted width on sm and up -->
+        <div class="hidden sm:flex items-center w-full max-w-sm bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200">
+            <!-- Search Icon -->
+            <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+            </svg>
+            <!-- Input Field -->
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
+            />
+        </div>
+
+        <!-- User Profile Area (Top Right on Mobile, Right on Desktop) -->
+        <!-- Used 'flex items-center space-x-6' to ensure the original desktop layout remains -->
+        <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200 border border-gray-400">
+                    <img src="https://cdn-icons-png.flaticon.com/128/4140/4140037.png" alt="User" class="object-cover w-full h-full" />
+                </div>
+                <!-- Hide the name on mobile, show on sm/desktop -->
+                <span class="hidden sm:inline text-sm font-medium">(User)</span>
+            </div>
+        </div>
+    </header>
+
+        <!-- H1 (Desktop) / Mobile Title (New Position) -->
+        <!-- Mobile: Aligns Title left, below the Menu Icon -->
+        <h1 class="text-2xl font-bold mb-3 sm:mb-6 px-1 sm:px-0">
+            <span class="block sm:hidden text-xl">Tracking</span>
+            <span class="hidden sm:block">Tracking</span>
+        </h1>
+
+        <!-- Mobile-Only Search Bar (Full Width, with original styling) -->
+        <!-- This div replicates the look of the desktop search bar but forces full width on mobile -->
+        <div class="sm:hidden flex items-center w-full bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200 mb-6 -mt-2.5">
+          <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
+          />
+        </div>
+  <!-- Filter Bar -->
+  <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-6 py-2 space-y-4 md:space-y-0">
+    <div class="flex items-center space-x-3 text-sm rounded-md bg-[#FFFFFF] p-2">
+      <button class=" bg-032b76 text-white px-2 xl:px-4 py-1.5 rounded-lg font-medium shadow-md">Last 30 Days</button>
+      <span class="text-gray-600 flex items-center">
+        Live Visitors
+        <span class="w-2 h-2 bg-[#25C470] rounded-full ml-2 mr-1 animate-pulse"></span>
+        <span class="text-[#25C470] font-semibold">2.5k</span>
+      </span>
+    </div>
+    <!-- Responsive Date Range + Buttons -->
+    <div class="w-full md:w-max sm:flex items-center gap-3 text-sm">
+
+      <!-- Date Range Selector -->
+      <div
+        class="mb-2 sm:mb-0 flex items-center p-2 bg-white rounded-lg border border-gray-300 shadow-sm w-full sm:w-auto justify-center sm:justify-start">
+
+        <!-- Start Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pr-1 w-22.5 sm:w-28 cursor-pointer"
+          value="2025-09-20" title="Select Start Date" />
+
+        <span class="text-gray-500 font-light mx-1">–</span>
+
+        <!-- End Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pl-1 w-22.5 sm:w-28 cursor-pointer"
+          value="2025-10-09" title="Select End Date" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
+        <button class="bg-032b76 text-white px-4 py-1.5 rounded-lg font-medium shadow-md w-full sm:w-auto">
+          Apply
+        </button>
+        <button class="text-032b76 py-1.5 rounded-lg font-medium hover:bg-blue-50 w-full sm:w-auto">
+          Clear Filter
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+        <!-- Search and Action Bar (Made responsive to stack correctly on mobile) -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+            <!-- Search Box (Full width on mobile, then margin) -->
+            <div class="relative w-full sm:grow sm:mr-4 order-1 sm:order-0">
+                <!-- Added blue border to match image design, made full width on mobile -->
+                <input type="text" placeholder="Search"
+                    class="pl-4 pr-4 py-2 bg-white border border-gray-300 rounded-md text-sm w-full focus:outline-none focus:ring-1 focus:ring-032b76">
+            </div>
+
+            <!-- Right: Action Buttons (Mobile: Stacks on top of tabs, full width/wrapped) -->
+            <div class="flex items-center gap-1 md:gap-2 text-sm whitespace-nowrap  justify-start sm:justify-end w-full sm:w-auto order-2 sm:order-0">
+
+                <!-- Export, Filter -->
+                <button
+                    class="flex items-center px-2 md:px-3 py-1.5 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 mb-2 sm:mb-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Export
+                </button>
+                <button
+                    class="flex items-center px-2 md:px-3 py-1.5 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 mb-2 sm:mb-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707v7l-4-4v-3.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                    Filter
+                </button>
+                <!-- Add Product -->
+                <button class="flex items-center px-3 py-1.5 bg-032b76 text-white rounded-md font-medium mb-2 sm:mb-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Add Product
+                </button>
+            </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-x-auto">
+
+            <!-- Secondary Filter Tabs (Pill/Button Style) -->
+            <div class="px-6 pt-4 border-b border-gray-200">
+                <div class="flex flex-wrap space-x-3 mb-4 text-sm font-sub">
+
+                    <!-- All Tab -->
+                    <button (click)="selectedFilter = 'All'" class="px-3 py-1 rounded-md transition-colors mb-2" [ngClass]="{
+                        'bg-032b76 text-white': selectedFilter === 'All',
+                        'text-gray-700 bg-gray-100 hover:bg-gray-200': selectedFilter !== 'All'
+                    }">
+                        All
+                    </button>
+
+                    <!-- Active Tab -->
+                    <button (click)="selectedFilter = 'Active'" class="px-3 py-1 rounded-md transition-colors mb-2"
+                        [ngClass]="{
+                        'bg-032b76 text-white': selectedFilter === 'Active',
+                        'text-gray-700 bg-gray-100 hover:bg-gray-200': selectedFilter !== 'Active'
+                    }">
+                        Active
+                    </button>
+
+                    <!-- Draft Tab -->
+                    <button (click)="selectedFilter = 'Draft'" class="px-3 py-1 rounded-md transition-colors mb-2" [ngClass]="{
+                        'bg-032b76 text-white': selectedFilter === 'Draft',
+                        'text-gray-700 bg-gray-100 hover:bg-gray-200': selectedFilter !== 'Draft'
+                    }">
+                        Draft
+                    </button>
+
+                    <!-- Archived Tab -->
+                    <button (click)="selectedFilter = 'Archived'" class="px-3 py-1 rounded-md transition-colors mb-2"
+                        [ngClass]="{
+                        'bg-032b76 text-white': selectedFilter === 'Archived',
+                        'text-gray-700 bg-gray-100 hover:bg-gray-200': selectedFilter !== 'Archived'
+                    }">
+                        Archived
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Table Content -->
+            <div class="relative">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <!-- Table Header: No uppercase, text is gray-500 -->
+                    <thead class="bg-gray-50 font-sub text-gray-500 text-sm  tracking-wider">
+                        <tr>
+                            <th scope="col" class="pl-6 py-3 text-left w-12 font-medium min-w-12.5">
+                                <div class="flex items-center">
+                                    <input id="select-all" type="checkbox" (change)="toggleSelectAll($event)" class="h-4 w-4 text-[#032B76] rounded border-gray-300 focus:ring-[#032B76]">
+                                </div>
+
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-17.5">#</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-25">Date</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-25">Status</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-37.5">Delivered to</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-37.5">Tracking n°</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-25">Placement</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-20">Total</th>
+                            <th scope="col" class="px-3 py-3 text-left whitespace-nowrap font-medium min-w-20">Direct</th>
+                            <th scope="col" class="pr-6 py-3 text-left w-12 font-medium min-w-12.5">-</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body -->
+                    <tbody class="bg-white divide-y divide-gray-200 text-sm font-sub">
+                        <tr *ngFor="let row of trackingData; let i = index"
+                            [ngClass]="{'bg-blue-50/50': row.selected, 'hover:bg-gray-50': !row.selected}">
+                            <td class="pl-6 py-4 whitespace-nowrap">
+                                <input type="checkbox" [(ngModel)]="row.selected"
+                                    class="h-4 w-4 text-[#032B76] rounded border-gray-300 focus:ring-[#032B76]">
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-[#020617]   underline">{{ row.id }}</td>
+                            <td class="px-3 py-4 whitespace-nowrap text-[#020617]">
+                                <div class="flex flex-col">
+                                    <span>{{ row.date }}</span>
+                                    <span class="text-xs text-gray-500">{{ row.time }}</span>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <span [ngClass]="getStatusClasses(row.status)"
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium">
+
+                                    <!-- Pending -->
+                                    <img *ngIf="row.status === 'Pending'"
+                                        src="https://cdn-icons-png.flaticon.com/128/4211/4211155.png" alt="Pending"
+                                        class="w-3 h-3 mr-1" style="filter: brightness(0) invert(1);">
+
+                                    <img *ngIf="row.status === 'Active'"
+                                        src="https://cdn-icons-png.flaticon.com/128/3114/3114811.png" alt="Active"
+                                        class="w-3 h-3 mr-1" style="filter: brightness(0) invert(1);">
+
+                                    <img *ngIf="row.status === 'In progress'"
+                                        src="https://cdn-icons-png.flaticon.com/128/4211/4211155.png" alt="In Progress"
+                                        class="w-3 h-3 mr-1" style="filter: brightness(0) invert(1);">
+
+
+                                    <!-- Cancelled -->
+                                    <img *ngIf="row.status === 'Cancelled'"
+                                        src="https://cdn-icons-png.flaticon.com/128/10727/10727988.png" alt="Cancelled"
+                                        class="w-3 h-3 mr-1">
+
+                                    <span class="leading-none">{{ row.status }}</span>
+                                </span>
+
+                            </td>
+                            <td class="px-3 py-4 text-[#020617] whitespace-pre-line leading-relaxed">{{ row.deliveredTo
+                                }}</td>
+                            <td class="px-3 py-4 whitespace-nowrap font-medium"
+                                [ngClass]="{'text-gray-400': row.trackingNo === '--'}">
+                                <span *ngIf="row.trackingNo !== '--'" class="underline text-[#020617]">{{ row.trackingNo
+                                    }}</span>
+                                <span *ngIf="row.trackingNo === '--'">{{ row.trackingNo }}</span>
+                            </td>
+                            <td class="px-3 py-4 text-[#020617] whitespace-pre-line leading-relaxed">{{ row.placement }}
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-800">{{ row.total }}</td>
+                            <td class="px-3 py-4 whitespace-nowrap text-[#020617]">{{ row.direct }}</td>
+                            <td class="pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+          <!-- Pagination Footer (Made extra small on mobile, restored to original sizes on desktop) -->
+<div class="flex flex-col sm:flex-row justify-between items-center border-t border-gray-200 px-4 py-3 font-sub space-y-3 sm:space-y-0">
+
+    <!-- Left: Selected Count -->
+    <!-- Mobile: text-[10px] | Desktop (sm:): text-sm -->
+    <div class="text-[10px] sm:text-sm text-gray-700 order-2 sm:order-0">
+        1 of 100 row(s) selected.
+    </div>
+
+    <!-- Right: Pagination Controls -->
+    <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 order-1 sm:order-0 w-full sm:w-auto justify-between sm:justify-start">
+
+        <!-- Rows Per Page Dropdown -->
+        <div class="flex items-center space-x-2 text-[10px] sm:text-sm whitespace-nowrap">
+            <span class="text-gray-700">Rows per page</span>
+            <select
+                class="border border-gray-300 rounded-md py-0.5 sm:py-1.5 px-1 sm:px-2 text-[10px] sm:text-sm focus:ring-[#032B76] focus:border-[#032B76] shadow-sm">
+                <option>8</option>
+                <option>10</option>
+                <option>20</option>
+            </select>
+        </div>
+
+        <!-- Page Info -->
+        <span class="text-[10px] sm:text-sm text-gray-700 whitespace-nowrap">Page 1 of 10</span>
+
+        <!-- Navigation Buttons -->
+        <div class="flex space-x-1 text-gray-500">
+            <!-- Buttons scaled down on mobile, restored to p-2 on desktop -->
+
+            <!-- First Page -->
+            <button class="p-0.5 sm:p-2 border border-gray-300 rounded-md hover:bg-gray-100 disabled:opacity-50"
+                disabled>
+                <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <!-- Previous Page -->
+            <button class="p-0.5 sm:p-2 border border-gray-300 rounded-md hover:bg-gray-100 disabled:opacity-50"
+                disabled>
+                <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                    </path>
+                </svg>
+            </button>
+            <!-- Next Page -->
+            <button class="p-0.5 sm:p-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50 transition">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                    </path>
+                </svg>
+            </button>
+            <!-- Last Page -->
+            <button class="p-0.5 sm:p-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50 transition">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>

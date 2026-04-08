@@ -1,0 +1,211 @@
+<!-- product-grid.component.html -->
+
+<div class="p-1 bg-gray-50 min-h-screen">
+  <h1 class="text-2xl font-bold mb-6">Product</h1>
+
+  <!-- Filter Bar -->
+  <div
+    class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4 py-2 space-y-4 md:space-y-0">
+    <div class="flex items-center space-x-3 text-sm rounded-md bg-[#FFFFFF] p-2">
+      <button class=" bg-032b76 text-white px-2 xl:px-4 py-1.5 rounded-lg font-medium shadow-md">Last 30 Days</button>
+      <span class="text-gray-600 flex items-center">
+        Live Visitors
+        <span class="w-2 h-2 bg-[#25C470] rounded-full ml-2 mr-1 animate-pulse"></span>
+        <span class="text-[#25C470] font-semibold">2.5k</span>
+      </span>
+    </div>
+    <!-- Responsive Date Range + Buttons -->
+    <div class="w-full md:w-max sm:flex items-center gap-3 text-sm">
+
+      <!-- Date Range Selector -->
+      <div
+        class="mb-2 sm:mb-0 flex items-center p-2 bg-white rounded-lg border border-gray-300 shadow-sm w-full sm:w-auto justify-center sm:justify-start">
+
+        <!-- Start Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pr-1 w-[90px] sm:w-28 cursor-pointer"
+          value="2025-09-20" title="Select Start Date" />
+
+        <span class="text-gray-500 font-light mx-1">–</span>
+
+        <!-- End Date -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pl-1 w-[90px] sm:w-28 cursor-pointer"
+          value="2025-10-09" title="Select End Date" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
+        <button class="bg-032b76 text-white px-4 py-1.5 rounded-lg font-medium shadow-md w-full sm:w-auto">
+          Apply
+        </button>
+        <button class="text-032b76 py-1.5 rounded-lg font-medium hover:bg-blue-50 w-full sm:w-auto">
+          Clear Filter
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Summary Cards Section -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+    <div *ngFor="let card of summaryCards"
+      class="flex p-3 gap-2 rounded-lg bg-white shadow-sm border border-gray-200 justify-between">
+      <div class="flex flex-col space-y-2">
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-medium text-gray-500">{{card.title}}</p>
+          <!-- Three Dots Menu Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 cursor-pointer" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+          </svg>
+        </div>
+        <div class="flex items-center space-x-4">
+          <!-- Icon Placeholder -->
+          <div class="p-2 rounded-md {{card.iconBgColor}} text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <span class="text-xl sm:text-2xl font-semibold text-gray-800">{{card.amount}}</span>
+        </div>
+      </div>
+      <div class="flex flex-col items-end pt-2">
+        <p class="text-green-600 font-medium text-sm">{{card.change}}</p>
+        <p class="text-xs text-gray-400 mt-1">{{card.comparison}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Grid Main Container -->
+  <div class="bg-white p-3 rounded-lg shadow-xl border-[1px] border-[{{lightBorder}}]">
+
+    <!-- Grid Header and Controls -->
+    <div class="mb-6">
+      <h2 class="text-lg font-medium mb-1 text-gray-700">Jeweller <span class="text-xs align-top">Ⓒ</span></h2>
+      <div class="sm:flex justify-between items-end mb-4">
+        <div class="text-xl font-semibold text-gray-800">
+          All Products
+        </div>
+
+        <div class="sm:flex items-center space-x-1 mt-2 sm:mt-0">
+          <div class="flex items-center gap-1 mb-2 sm:mb-0">
+            <!-- View Toggles (Grid/List) - ADDED CLICK HANDLERS AND STYLING -->
+          <div class="flex border border-gray-300 rounded-md p-1">
+            <!-- Grid View Button (Active in this component) -->
+            <button (click)="changeView('grid')" class="p-1" [ngClass]="{
+                                    'bg-gray-100 rounded-l-md text-gray-600': currentView === 'grid',
+                                    'text-gray-400': currentView !== 'grid'
+                                }">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+            <!-- List View Button (Inactive by default in this component) -->
+            <button (click)="changeView('list')" class="p-1" [ngClass]="{
+                                    'bg-gray-100 rounded-r-md text-gray-600': currentView === 'list',
+                                    'text-gray-400': currentView !== 'list'
+                                }">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Category Dropdown -->
+          <button class="flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 text-sm">
+            Category
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          </div>
+
+          <!-- Add Product -->
+          <button
+            class="flex items-center px-4 py-1.5 bg-[#0D47A1] text-white rounded-md text-sm font-medium whitespace-nowrap hover:bg-[#0b3c8a] transition"
+            (click)="openAddProduct()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            Add New Product
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+      <!-- Product Card Loop -->
+      <div *ngFor="let product of products"
+        class="border border-gray-200 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition duration-150">
+        <div class="flex justify-between items-start mb-3">
+
+          <!-- Product Image Area -->
+          <div
+            class="w-20 h-20 rounded-md mr-3 border border-gray-200 overflow-hidden bg-white flex items-center justify-center">
+            <img [src]="product.imagePath" alt="{{product.name}}" class="object-contain w-full h-full p-1">
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <p class="text-base font-semibold text-gray-800 truncate">{{product.name}}</p>
+            <p class="text-xs text-gray-500 mt-0.5">{{product.category}}</p>
+            <p class="text-base font-bold text-gray-900 mt-1">{{product.price}}</p>
+          </div>
+
+          <!-- Three Dots Menu Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 cursor-pointer ml-3" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+          </svg>
+        </div>
+
+        <!-- Description/Summary -->
+        <div class="mb-4">
+          <p class="text-sm font-medium text-gray-800 mb-1.5">Summary</p>
+          <p class="text-xs text-gray-600 line-clamp-2">{{product.summary}}</p>
+        </div>
+
+        <!-- Specs Grid -->
+        <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs border-t border-gray-200 pt-3">
+          <div *ngFor="let spec of product.specs" class="flex justify-between">
+            <span class="text-[#032B76] font-medium truncate">{{spec.label}}:</span>
+            <span class="text-gray-700 font-medium ml-2">{{spec.value}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- End Product Card Loop -->
+    </div>
+
+    <!-- Pagination Footer -->
+    <div class="flex justify-start items-center space-x-1 mt-6 pt-4 border-t border-gray-200">
+      <ng-container *ngFor="let page of pagination">
+        <button [ngClass]="{
+                        'bg-white text-[{{darkBlue}}] border border-gray-300': page !== currentPage,
+                        'bg-[{{darkBlue}}] text-white border border-[{{darkBlue}}]': page === currentPage,
+                        'hover:bg-gray-100': page !== '...'
+                    }"
+          class="h-8 w-8 text-sm font-medium rounded-md flex items-center justify-center transition duration-150">
+          {{ page }}
+        </button>
+      </ng-container>
+
+      <!-- NEXT Button -->
+      <button
+        class="h-8 px-3 ml-2 text-sm font-medium rounded-md flex items-center justify-center text-gray-700 border border-gray-300 bg-white hover:bg-gray-50">
+        NEXT
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

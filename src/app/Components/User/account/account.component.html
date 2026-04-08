@@ -1,0 +1,57 @@
+<div class="min-h-screen bg-fec00f40">
+  <!-- Main Content Container -->
+  <div class="max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    <!-- Profile Content Area -->
+    <div class="bg-white w-full p-4 shadow-xl rounded-lg">
+      <div class="flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <div class="w-full md:w-50 bg-white p-2
+                    border-b md:border-b-0 md:border-r border-[#E0E0E0]
+                    mb-4 md:mb-0">
+          <nav class="w-full space-y-4">
+            <ng-container *ngFor="let tab of tabs">
+              <button (click)="handleTabClick(tab.key)" [ngClass]="{
+                  'bg-b37800 text-white font-medium shadow-md': activeTab === tab.key,
+                  'text-1c1c1c hover:text-b37800 font-normal': activeTab !== tab.key
+                }" class="w-full text-left py-2 px-4 rounded-md transition duration-150 ease-in-out">
+                {{ tab.label }}
+              </button>
+            </ng-container>
+          </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="bg-white w-full p-2 min-h-125">
+          <ng-container [ngSwitch]="activeTab">
+
+            <!-- Personal Details -->
+            <div *ngSwitchCase="'profile'">
+              <app-profile> </app-profile>
+            </div>
+
+            <!-- Address -->
+            <div *ngSwitchCase="'address'">
+              <app-address></app-address>
+            </div>
+
+            <!-- Orders -->
+            <div *ngSwitchCase="'orders'">
+              <app-orders></app-orders>
+            </div>
+
+            <!--Cart-->
+            <div *ngSwitchCase="'cart'">
+              <app-user-cart></app-user-cart>
+            </div>
+
+            <!--Wishlist-->
+            <div *ngSwitchCase="'wishlist'">
+              <app-user-wishlist></app-user-wishlist>
+            </div>
+
+          </ng-container>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

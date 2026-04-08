@@ -1,0 +1,52 @@
+<section class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+
+  <!-- Decorative Element -->
+  <div class="flex items-center justify-center space-x-1 sm:space-x-1.5 mb-2">
+    <!-- Left Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+    <!-- center flower -->
+    <img class="w-6.25 h-6.25 sm:w-7.5 sm:h-7.5" src="/assets/images/home/flower.png" alt="flower">
+    <!-- Right Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+  </div>
+
+  <!-- Title and Subtitle -->
+  <div class="text-center">
+    <p class="text-1c1c1c capitalize text-sm md:text-base lg:text-xl xl:text-2xl font-medium mb-0.5">More</p>
+    <h1
+      class="text-xl/tight sm:text-2xl/tight md:text-3xl/tight lg:text-4xl/tight xl:text-5xl/tight font-medium capitalize text-b37800">
+      Sparkling Choices</h1>
+  </div>
+
+  <!-- product slider -->
+  <div class="relative mt-4 md:mt-6 lg:mt-8 xl:mt-10">
+    <swiper-container #swiperRef init="false" class="w-full">
+      <!-- product card -->
+      <swiper-slide *ngFor="let item of products" class="py-1">
+        <a [routerLink]="item.link">
+          <div class="bg-f8f8f8 rounded-lg">
+            <div class="w-full">
+              <img [src]="item.image" [alt]="item.alt" class="w-full aspect-square rounded-lg" />
+            </div>
+            <div class="p-2">
+              <div class="flex items-center justify-between gap-2">
+                <!-- item price -->
+                <p
+                  class="text-1c1c1c capitalize font-semibold text-xs sm:text-base lg:text-lg xl:text-xl text-center">
+                  {{ item.price }}</p>
+                  <!-- wishlist icon -->
+                <svg class="size-7 cursor-pointer" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M25.9702 5.31152C30.4928 5.31152 34.0366 8.84204 34.0366 13.3789C34.0365 16.1516 32.7914 18.7212 30.481 21.5479C28.1639 24.3825 24.8374 27.4033 20.7729 31.0889V31.0898L18.8872 32.8057L17.0024 31.0898L17.0015 31.0889C12.937 27.4033 9.61045 24.3825 7.29346 21.5479C4.98307 18.7212 3.73792 16.1516 3.73779 13.3789C3.73779 8.84204 7.28264 5.31152 11.8052 5.31152C14.3653 5.31165 16.8324 6.50687 18.4399 8.37988L18.8872 8.90137L19.3354 8.37988C20.943 6.50683 23.41 5.31159 25.9702 5.31152Z"
+                    stroke="#B37800" stroke-width="1.18047" />
+                </svg>
+              </div>
+              <!-- item name -->
+              <p class="text-1c1c1c capitalize font-normal text-[10px] sm:text-xs/tight md:text-sm/tight lg:text-base/tight truncate mt-0.5">{{ item.name }}</p>
+            </div>
+          </div>
+        </a>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</section>

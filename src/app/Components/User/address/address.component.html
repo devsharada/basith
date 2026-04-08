@@ -1,0 +1,75 @@
+<div class="w-full">
+
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
+    <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-b37800 mb-4 md:mb-0">Saved Address</h1>
+
+    <div class="flex items-center space-x-4">
+      <!-- Edit Button -->
+      <button class="cursor-pointer bg-b37800 hover:bg-b37800/80 text-white font-semibold py-2 px-2 sm:px-6 rounded-md transition duration-150 ease-in-out text-sm shrink-0">
+        Edit
+      </button>
+
+      <!-- Search -->
+      <div class="relative hidden md:block">
+        <input
+          type="text"
+          placeholder="Search ..."
+          class="w-48 border border-d9d8d8 rounded-md py-2 pl-2 pr-10 text-sm lg:text-base focus:outline-none focus:ring-b37800 focus:border-b37800 text-1c1c1c placeholder-9d9d9d">
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Section -->
+  <div class="space-y-6">
+    <div class="flex items-center space-x-2 text-1c1c1c font-medium">
+      <svg class="w-5 h-5 text-1c1c1c" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <span class="text-sm lg:text-base font-semibold text-1c1c1c">Primary Address</span>
+    </div>
+
+    <!-- Address Inputs -->
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+
+      <!-- State Dropdown -->
+      <div class="relative">
+        <select class="block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c focus:outline-none focus:ring-b37800 focus:border-b37800">
+          <option value="" disabled selected>Select State</option>
+          <option *ngFor="let state of states">{{ state }}</option>
+        </select>
+      </div>
+
+      <!-- City Dropdown -->
+      <div class="relative">
+        <select class="block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c focus:outline-none focus:ring-b37800 focus:border-b37800">
+          <option value="" disabled selected>Select City</option>
+          <option *ngFor="let city of cities">{{ city }}</option>
+        </select>
+      </div>
+
+      <!-- Pin Code -->
+      <div>
+        <input type="text" placeholder="Pin Code" class="block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c placeholder-gray-500 focus:outline-none focus:ring-b37800 focus:border-b37800">
+      </div>
+    </div>
+
+    <!-- Full Address -->
+    <div>
+      <textarea placeholder="Enter full address" rows="5" class="block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c placeholder-gray-500 focus:outline-none focus:ring-b37800 focus:border-b37800"></textarea>
+    </div>
+  </div>
+
+  <!-- Footer Button -->
+  <div class="flex justify-end pt-6 sm:pt-8">
+    <button class="cursor-pointer bg-b37800 hover:bg-b37800/80 text-white font-semibold py-2 px-6 sm:px-8 rounded-md transition duration-150 ease-in-out shadow-md">
+      Save Details
+    </button>
+  </div>
+</div>

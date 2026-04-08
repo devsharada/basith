@@ -1,0 +1,39 @@
+<div class="w-full pt-5 lg:pt-6">
+  <h3
+    class="capitalize text-sm/tight sm:text-base/tight md:text-lg/tight lg:text-xl/tight xl:text-2xl/tight font-semibold text-b37800 mb-5">
+    Bangle Size Guide</h3>
+  <p class="mb-3 text-1c1c1c space-y-2 text-xs/relaxed sm:text-sm/relaxed md:text-base/relaxed xl:text-[17px]/relaxed">
+    Finding the right bangle size ensures both comfort and elegance. We help you discover your perfect fit with ease. To
+    measure your size, simply take a bangle that fits you well and measure its inner diameter using a ruler. Then, refer
+    to our size chart below to find your matching Indian bangle size.</p>
+  <p class="text-1c1c1c space-y-2 text-xs/relaxed sm:text-sm/relaxed md:text-base/relaxed xl:text-[17px]/relaxed">
+    However, you can also measure your ring size easily at home with simple steps.</p>
+
+  <div class=" w-full mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-2.5 xl:gap-4 mt-6 lg:mt-8">
+    <div>
+      <img class="w-full" src="/assets/images/size/bangle-size-guide1.png" alt="bangle size guide">
+    </div>
+    <div>
+      <img class="w-full" src="/assets/images/size/bangle-size-guide2.png" alt="bangle size guide">
+    </div>
+    <div class="col-span-2">
+      <div class="w-full">
+        <table class="w-full border border-d9d8d8 text-sm md:text-base">
+          <thead class="bg-f8f8f8 text-1c1c1c">
+            <tr>
+              <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Bangle Size (Indian)</th>
+              <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Inner Diameter (cm)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let row of tableOne">
+              <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.size }}</td>
+              <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.dia }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

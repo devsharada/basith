@@ -1,0 +1,269 @@
+<div class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <!-- breadcrumb -->
+  <app-breadcrumb [items]="[
+    { label: 'Home', link: '/home' },
+    { label: 'All Jewellery', link: '/products' },
+    { label: 'Product Name' }
+  ]"></app-breadcrumb>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:gap-4 mt-4">
+    <!-- Left: Product Images -->
+    <div class="w-full xl:pe-6 mx-auto">
+      <!-- product image div -->
+      <div class="relative w-full flex items-start gap-2">
+        <!-- Thumbnail Loop -->
+        <div class="relative w-1/5">
+          <!-- Prev -->
+          <button (click)="prevThumb()"
+            class="flex items-center justify-center mx-auto absolute top-0 right-[35%] size-5 xl:size-7 bg-gray-200 shadow rounded-full z-10">
+            <svg width="15" height="9" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.25 9.25L8.25 1.25L15.25 9.25" stroke="#B37800" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+
+          </button>
+
+          <div class="flex flex-col w-full gap-2 mx-auto">
+            <img *ngFor="let img of visibleThumbnails" (click)="selectImage(img)" [src]="img"
+              class="w-full aspect-square object-cover border rounded-md cursor-pointer shrink-0"
+              [ngClass]="selectedImage === img ? 'border-b37800' : 'border-d9d8d8'">
+          </div>
+
+          <!-- Next -->
+          <button (click)="nextThumb()"
+            class="flex items-center justify-center mx-auto absolute bottom-0 right-[35%] size-5 xl:size-7 bg-gray-200 shadow rounded-full z-10">
+            <svg width="15" height="9" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.25 1.25L8.25 9.25L1.25 1.25" stroke="#B37800" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+
+          </button>
+        </div>
+        <!-- Main Image -->
+        <div *ngIf="selectedImage" class="w-4/5 rounded-md overflow-hidden border border-d9d8d8 cursor-zoom-in"
+          (click)="openZoom(thumbnails.indexOf(selectedImage))">
+          <img [src]="selectedImage" alt="Selected Design" class="w-full object-cover rounded-lg">
+        </div>
+      </div>
+
+      <!-- Policies -->
+      <div
+        class="bg-ffeabe70 mt-4 px-8 py-4 w-full rounded-lg grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 space-y-2">
+        <div class="flex items-center gap-2">
+          <img class="size-5" src="/assets/images/product/easy-return.png" alt="easy-return">
+          <p class="text-08503f text-sm lg:text-base font-normal">Easy Returns</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <img class="size-5" src="/assets/images/product/shine.png" alt="easy-return">
+          <p class="text-08503f text-sm lg:text-base font-normal">Everlasting Plating Shine</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <img class="size-5" src="/assets/images/product/warranty.png" alt="easy-return">
+          <p class="text-08503f text-sm lg:text-base font-normal">6 Month Warranty</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <img class="size-5" src="/assets/images/product/925-silver.png" alt="easy-return">
+          <p class="text-08503f text-sm lg:text-base font-normal">Certified 925 Silver</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Product Info -->
+    <div class="space-y-2 mt-4 md:mt-0">
+      <!-- product name & Price -->
+      <div>
+        <div class="sm:flex items-center justify-between gap-2 sm:gap-2.5 md:gap-3">
+          <h1 class="text-xl md:text-2xl xl:text-3xl text-1c1c1c font-normal capitalize">Tone Diamond Ring</h1>
+          <!-- wishlist & share icon -->
+          <div class="flex items-center justify-end gap-2">
+            <!-- wishlist icon -->
+            <button class="cursor-pointer">
+              <p class="hover:scale-105 transition duration-200">
+                <svg class="size-5 lg:size-7" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+                    stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </p>
+            </button>
+            <!-- share icon -->
+            <button class="cursor-pointer">
+              <p class=" hover:scale-105 transition duration-200">
+                <svg class="size-5 lg:size-7" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.5308 29.75C22.5921 29.75 21.7954 29.4218 21.1409 28.7654C20.4874 28.1081 20.1606 27.31 20.1606 26.3712C20.1606 26.2296 20.2229 25.8721 20.3476 25.2988L10.1518 19.2454C9.84583 19.5986 9.47136 19.8758 9.02842 20.077C8.58547 20.2782 8.10994 20.3787 7.60183 20.3787C6.67061 20.3787 5.87917 20.0472 5.2275 19.3842C4.57583 18.7212 4.25 17.9265 4.25 17C4.25 16.0735 4.57583 15.2788 5.2275 14.6158C5.87917 13.9528 6.67061 13.6212 7.60183 13.6212C8.109 13.6212 8.58453 13.7218 9.02842 13.923C9.47231 14.1242 9.84678 14.4018 10.1518 14.756L20.349 8.72808C20.2829 8.54486 20.2352 8.36306 20.2059 8.18267C20.1757 8.00133 20.1606 7.81622 20.1606 7.62733C20.1606 6.6895 20.4897 5.89192 21.148 5.23458C21.8063 4.57819 22.6053 4.25 23.545 4.25C24.4847 4.25 25.2818 4.57914 25.9363 5.23742C26.5908 5.89569 26.9176 6.69469 26.9167 7.63442C26.9157 8.57414 26.5875 9.37125 25.9321 10.0258C25.2766 10.6803 24.4786 11.007 23.5379 11.0061C23.026 11.0061 22.5538 10.9012 22.1213 10.6916C21.6887 10.4819 21.3204 10.2 21.0163 9.84583L10.8177 15.8992C10.8838 16.0825 10.9315 16.2647 10.9608 16.4461C10.991 16.6265 11.0061 16.8111 11.0061 17C11.0061 17.1889 10.991 17.3735 10.9608 17.5539C10.9305 17.7343 10.8833 17.9166 10.8191 18.1007L21.0163 24.1542C21.3213 23.8 21.6896 23.5181 22.1213 23.3084C22.5538 23.0987 23.026 22.9939 23.5379 22.9939C24.4767 22.9939 25.2748 23.3226 25.9321 23.9799C26.5885 24.6391 26.9167 25.4386 26.9167 26.3783C26.9167 27.3181 26.5875 28.1152 25.9293 28.7697C25.271 29.4242 24.4706 29.7509 23.5308 29.75ZM23.5379 28.3333C24.0942 28.3333 24.5603 28.1454 24.9362 27.7695C25.3121 27.3936 25.5 26.928 25.5 26.3727C25.5 25.8173 25.3121 25.3512 24.9362 24.9744C24.5603 24.5976 24.0947 24.4096 23.5393 24.4106C22.984 24.4115 22.5179 24.5995 22.1411 24.9744C21.7642 25.3494 21.5763 25.815 21.5773 26.3712C21.5782 26.9275 21.7661 27.3936 22.1411 27.7695C22.516 28.1454 22.9807 28.3333 23.5379 28.3333ZM7.60183 18.9607C8.16472 18.9607 8.63694 18.7727 9.0185 18.3968C9.39911 18.0209 9.58942 17.5553 9.58942 17C9.58942 16.4447 9.39911 15.9791 9.0185 15.6032C8.63789 15.2273 8.16567 15.0393 7.60183 15.0393C7.05311 15.0393 6.59364 15.2273 6.22342 15.6032C5.85319 15.9791 5.66761 16.4447 5.66667 17C5.66572 17.5553 5.85131 18.0214 6.22342 18.3983C6.59553 18.7751 7.055 18.9626 7.60183 18.9607ZM23.5393 9.58942C24.0947 9.58942 24.5603 9.40147 24.9362 9.02558C25.3121 8.64969 25.5 8.18361 25.5 7.62733C25.5 7.07106 25.3121 6.60544 24.9362 6.2305C24.5603 5.85556 24.0947 5.66761 23.5393 5.66667C22.984 5.66572 22.5179 5.85367 22.1411 6.2305C21.7642 6.60733 21.5763 7.07342 21.5773 7.62875C21.5782 8.18408 21.7661 8.64969 22.1411 9.02558C22.516 9.40147 22.9821 9.58942 23.5393 9.58942Z"
+                    fill="black" />
+                </svg>
+              </p>
+            </button>
+          </div>
+        </div>
+
+        <!-- rating & reviews -->
+        <div class="flex items-center gap-3 mt-2">
+          <svg width="113" height="20" viewBox="0 0 103 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.73398 2.03147C7.81193 1.89771 7.92359 1.78673 8.05782 1.70959C8.19205 1.63245 8.34416 1.59186 8.49898 1.59186C8.6538 1.59186 8.80591 1.63245 8.94014 1.70959C9.07437 1.78673 9.18603 1.89771 9.26398 2.03147L11.2438 5.43006L15.0886 6.26306C15.2398 6.29592 15.3798 6.36785 15.4946 6.47168C15.6094 6.57552 15.6949 6.70762 15.7427 6.85482C15.7905 7.00202 15.7989 7.15918 15.767 7.31063C15.7352 7.46208 15.6641 7.60253 15.5611 7.71797L12.9402 10.6512L13.3369 14.5647C13.3525 14.7188 13.3275 14.8743 13.2642 15.0157C13.201 15.1571 13.1018 15.2794 12.9764 15.3705C12.8511 15.4615 12.7041 15.5181 12.5501 15.5346C12.3961 15.551 12.2405 15.5268 12.0987 15.4643L8.49898 13.8776L4.89923 15.4643C4.75751 15.5268 4.60187 15.551 4.44785 15.5346C4.29383 15.5181 4.14683 15.4615 4.02152 15.3705C3.8962 15.2794 3.79697 15.1571 3.73372 15.0157C3.67047 14.8743 3.64542 14.7188 3.66107 14.5647L4.05773 10.6512L1.4369 7.71868C1.33364 7.60324 1.26248 7.46274 1.2305 7.31119C1.19853 7.15965 1.20686 7.00237 1.25468 6.85505C1.30249 6.70774 1.38811 6.57554 1.50299 6.47166C1.61787 6.36778 1.75799 6.29585 1.90936 6.26306L5.75419 5.43006L7.73398 2.03147Z"
+              fill="#F5CC17" />
+            <path
+              d="M29.189 2.03147C29.2715 1.89771 29.3897 1.78673 29.5318 1.70959C29.674 1.63245 29.835 1.59186 29.999 1.59186C30.1629 1.59186 30.3239 1.63245 30.4661 1.70959C30.6082 1.78673 30.7264 1.89771 30.809 2.03147L32.9052 5.43006L36.9762 6.26306C37.1363 6.29592 37.2846 6.36785 37.4061 6.47168C37.5276 6.57552 37.6182 6.70762 37.6688 6.85482C37.7194 7.00202 37.7283 7.15918 37.6945 7.31063C37.6608 7.46208 37.5856 7.60253 37.4765 7.71797L34.7015 10.6512L35.1215 14.5647C35.138 14.7188 35.1115 14.8743 35.0445 15.0157C34.9776 15.1571 34.8725 15.2794 34.7398 15.3705C34.6071 15.4615 34.4515 15.5181 34.2884 15.5346C34.1253 15.551 33.9605 15.5268 33.8105 15.4643L29.999 13.8776L26.1875 15.4643C26.0374 15.5268 25.8726 15.551 25.7095 15.5346C25.5464 15.5181 25.3908 15.4615 25.2581 15.3705C25.1254 15.2794 25.0203 15.1571 24.9534 15.0157C24.8864 14.8743 24.8599 14.7188 24.8765 14.5647L25.2965 10.6512L22.5215 7.71868C22.4121 7.60324 22.3368 7.46274 22.3029 7.31119C22.2691 7.15965 22.2779 7.00237 22.3285 6.85505C22.3791 6.70774 22.4698 6.57554 22.5914 6.47166C22.7131 6.36778 22.8614 6.29585 23.0217 6.26306L27.0927 5.43006L29.189 2.03147Z"
+              fill="#F5CC17" />
+            <path
+              d="M50.734 2.03147C50.8119 1.89771 50.9236 1.78673 51.0578 1.70959C51.1921 1.63245 51.3442 1.59186 51.499 1.59186C51.6538 1.59186 51.8059 1.63245 51.9401 1.70959C52.0744 1.78673 52.186 1.89771 52.264 2.03147L54.2438 5.43006L58.0886 6.26306C58.2398 6.29592 58.3798 6.36785 58.4946 6.47168C58.6094 6.57552 58.6949 6.70762 58.7427 6.85482C58.7905 7.00202 58.7989 7.15918 58.767 7.31063C58.7352 7.46208 58.6641 7.60253 58.5611 7.71797L55.9402 10.6512L56.3369 14.5647C56.3525 14.7188 56.3275 14.8743 56.2642 15.0157C56.201 15.1571 56.1018 15.2794 55.9764 15.3705C55.8511 15.4615 55.7041 15.5181 55.5501 15.5346C55.3961 15.551 55.2405 15.5268 55.0987 15.4643L51.499 13.8776L47.8992 15.4643C47.7575 15.5268 47.6019 15.551 47.4478 15.5346C47.2938 15.5181 47.1468 15.4615 47.0215 15.3705C46.8962 15.2794 46.797 15.1571 46.7337 15.0157C46.6705 14.8743 46.6454 14.7188 46.6611 14.5647L47.0577 10.6512L44.4369 7.71868C44.3336 7.60324 44.2625 7.46274 44.2305 7.31119C44.1985 7.15965 44.2069 7.00237 44.2547 6.85505C44.3025 6.70774 44.3881 6.57554 44.503 6.47166C44.6179 6.36778 44.758 6.29585 44.9094 6.26306L48.7542 5.43006L50.734 2.03147Z"
+              fill="#F5CC17" />
+            <path
+              d="M72.189 2.03147C72.2715 1.89771 72.3897 1.78673 72.5318 1.70959C72.674 1.63245 72.835 1.59186 72.999 1.59186C73.1629 1.59186 73.3239 1.63245 73.4661 1.70959C73.6082 1.78673 73.7264 1.89771 73.809 2.03147L75.9052 5.43006L79.9762 6.26306C80.1363 6.29592 80.2846 6.36785 80.4061 6.47168C80.5276 6.57552 80.6182 6.70762 80.6688 6.85482C80.7194 7.00202 80.7283 7.15918 80.6945 7.31063C80.6608 7.46208 80.5856 7.60253 80.4765 7.71797L77.7015 10.6512L78.1215 14.5647C78.138 14.7188 78.1115 14.8743 78.0445 15.0157C77.9776 15.1571 77.8725 15.2794 77.7398 15.3705C77.6071 15.4615 77.4515 15.5181 77.2884 15.5346C77.1253 15.551 76.9605 15.5268 76.8105 15.4643L72.999 13.8776L69.1875 15.4643C69.0374 15.5268 68.8726 15.551 68.7095 15.5346C68.5464 15.5181 68.3908 15.4615 68.2581 15.3705C68.1254 15.2794 68.0203 15.1571 67.9534 15.0157C67.8864 14.8743 67.8599 14.7188 67.8765 14.5647L68.2965 10.6512L65.5215 7.71868C65.4121 7.60324 65.3368 7.46274 65.3029 7.31119C65.2691 7.15965 65.2779 7.00237 65.3285 6.85505C65.3791 6.70774 65.4698 6.57554 65.5914 6.47166C65.7131 6.36778 65.8614 6.29585 66.0217 6.26306L70.0927 5.43006L72.189 2.03147Z"
+              fill="#F5CC17" />
+            <path
+              d="M93.734 2.03147C93.8119 1.89771 93.9236 1.78673 94.0578 1.70959C94.1921 1.63245 94.3442 1.59186 94.499 1.59186C94.6538 1.59186 94.8059 1.63245 94.9401 1.70959C95.0744 1.78673 95.186 1.89771 95.264 2.03147L97.2438 5.43006L101.089 6.26306C101.24 6.29592 101.38 6.36785 101.495 6.47168C101.609 6.57552 101.695 6.70762 101.743 6.85482C101.791 7.00202 101.799 7.15918 101.767 7.31063C101.735 7.46208 101.664 7.60253 101.561 7.71797L98.9402 10.6512L99.3369 14.5647C99.3525 14.7188 99.3275 14.8743 99.2642 15.0157C99.201 15.1571 99.1018 15.2794 98.9764 15.3705C98.8511 15.4615 98.7041 15.5181 98.5501 15.5346C98.3961 15.551 98.2405 15.5268 98.0987 15.4643L94.499 13.8776L90.8992 15.4643C90.7575 15.5268 90.6019 15.551 90.4478 15.5346C90.2938 15.5181 90.1468 15.4615 90.0215 15.3705C89.8962 15.2794 89.797 15.1571 89.7337 15.0157C89.6705 14.8743 89.6454 14.7188 89.6611 14.5647L90.0577 10.6512L87.4369 7.71868C87.3336 7.60324 87.2625 7.46274 87.2305 7.31119C87.1985 7.15965 87.2069 7.00237 87.2547 6.85505C87.3025 6.70774 87.3881 6.57554 87.503 6.47166C87.6179 6.36778 87.758 6.29585 87.9094 6.26306L91.7542 5.43006L93.734 2.03147Z"
+              fill="#F5CC17" />
+          </svg>
+          <p class="text-sm lg:text-base font-normal capitalize text-9d9d9d">6 Reviews</p>
+        </div>
+
+        <!-- price -->
+        <div class="flex items-center gap-4 mt-3 mb-0.5">
+          <p class="text-xl md:text-2xl lg:text-3xl xl:text-[32px] font-medium text-1c1c1c">₹ 50,000/-
+          </p>
+          <p class="text-9d9d9d font-normal text-base md:text-lg lg:text-xl xl:text-2xl line-through">₹ 54,000/-</p>
+          <p class="bg-b37800 px-3 py-0.5 text-xs sm:text-sm lg:text-base text-white font-medium rounded-full font-kaisei">20% Off
+          </p>
+        </div>
+        <p class="text-[10px] md:text-xs lg:text-sm font-normal text-9d9d9d">MRP Incl. of all taxes</p>
+      </div>
+
+      <!-- check pincode -->
+      <div class="pb-3 border-b border-b37800">
+        <p class="text-1c1c1c font-normal text-sm md:text-base lg:text-lg mb-2">Pincode</p>
+        <div class="relative overflow-hidden w-full xl:w-1/2">
+          <input type="text" placeholder="Enter Pincode"
+            class=" outline-none w-full border border-d9d8d8 focus:border-b37800 rounded-md px-2 py-2 text-sm sm:text-base text-gray-700 placeholder-gray-500 bg-transparent">
+          <button
+            class="bg-fec00f40 absolute inset-y-0 right-0 px-3 py-1 font-medium text-sm lg:text-base">Check</button>
+        </div>
+      </div>
+
+      <!-- select size & size guide -->
+      <div class="mt-4 mb-4 border-b border-b37800">
+        <div class="flex items-center justify-between gap-2 sm:gap-2.5 md:gap-3">
+          <p class="text-1c1c1c font-normal text-sm md:text-base lg:text-lg xl:text-xl">Select Size <span
+              class="text-08503f">(mm)</span></p>
+          <a routerLink="/size-guide"
+            class="capitalize underline text-b37800 font-normal text-sm md:text-base lg:text-lg">Size
+            Guide</a>
+        </div>
+        <!-- sizes -->
+        <div class="flex items-center flex-wrap gap-2 my-4">
+          <div *ngFor="let s of sizes" (click)="selectSize(s)" [ngClass]="selectedSize === s
+        ? 'bg-fff2d7 text-b37800 border-b37800'
+        : 'border-9d9d9d text-1c1c1c'"
+            class="rounded-md border flex items-center justify-center size-8 md:size-10 lg:size-12 text-xs sm:text-base lg:text-lg font-medium cursor-pointer transition-all duration-200">
+            {{ s }}
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full border border-gray-200 rounded-lg divide-y">
+        <!-- Accordion Header -->
+        <button type="button"
+          class="w-full flex items-center justify-between px-4 py-3 text-left text-sm md:text-base lg:text-lg font-medium text-gray-800"
+          (click)="open = !open">
+          Customize This Product
+          <svg class="w-4 h-4 transition-transform duration-300" viewBox="0 0 31 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L15.5 15L31 0H0Z" fill="#B37800" />
+          </svg>
+        </button>
+
+        <!-- Accordion Content -->
+        <div *ngIf="open" class="px-4 pb-4 text-1c1c1c text-sm md:text-base space-y-2 pt-3">
+          add custom product details
+        </div>
+      </div>
+
+      <!-- Add to Cart & Buy Now button -->
+      <div class="flex items-center justify-between gap-2 sm:gap-2.5 md:gap-3 mb-3 lg:mb-6">
+        <button routerLink="/cart"
+          class="cursor-pointer capitalize w-full py-2 xl:py-3 my-3 text-b37800 bg-white border border-b37800 text-sm md:text-base lg:text-lg xl:text-xl rounded-md transition">
+          Add To Cart
+        </button>
+
+        <button routerLink="/checkout"
+          class="cursor-pointer overflow-hidden block text-center capitalize w-full py-2 xl:py-3 my-3 text-white bg-b37800 border border-b37800 text-sm md:text-base lg:text-lg xl:text-xl rounded-md transition-all duration-300 hover:scale-[1.02] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-white/20 before:skew-x-[-20deg] hover:before:left-full before:transition-all before:duration-500">
+          Buy Now
+        </button>
+      </div>
+
+      <div>
+        <!-- Tabs -->
+        <div class="bg-f9f9f9 flex items-end justify-center gap-2 sm:gap-3 md:gap-4 py-2 px-2 rounded-md">
+          <button
+            class="w-max 2xl:w-1/3 cursor-pointer px-2 2xl:px-5 py-2 font-medium text-center transition-colors text-sm sm:text-base 2xl:text-lg rounded-md"
+            [ngClass]="activeTab === 1 ? 'bg-b37800 text-white' : 'text-1c1c1c'"
+            (click)="activeTab = 1">Description</button>
+          <button
+            class="w-max 2xl:w-1/3 cursor-pointer px-2 2xl:px-5 py-2 font-medium text-center transition-colors text-sm sm:text-base 2xl:text-lg rounded-md"
+            [ngClass]="activeTab === 2 ? 'bg-b37800 text-white' : 'text-1c1c1c'" (click)="activeTab = 2">
+            Product Details
+          </button>
+          <button
+            class="w-max 2xl:w-1/3 cursor-pointer px-2 2xl:px-5 py-2 font-medium text-center transition-colors text-sm sm:text-base 2xl:text-lg rounded-md"
+            [ngClass]="activeTab === 3 ? 'bg-b37800 text-white' : 'text-1c1c1c'" (click)="activeTab = 3">
+            Shipping & Delivery
+          </button>
+        </div>
+
+        <!-- Tab content -->
+        <div class="w-full mt-4">
+          <div *ngIf="activeTab === 1">
+            <div class=" text-9d9b9b font-normal text-sm/relaxed lg:text-base/relaxed space-y-3">
+              <p>Discover the essence of everlasting elegance with our Gold-Plated Designer Ring, thoughtfully
+                handcrafted
+                for women who adore sophistication in every detail. Blending traditional artistry with a modern edge,
+                this
+                ring is more than an accessory — it’s a timeless reflection of beauty and confidence.</p>
+              <p>Each curve and contour is meticulously designed, finished with a radiant gold polish that enhances its
+                luxurious appeal. Lightweight, skin-friendly, and exquisitely detailed, it pairs effortlessly with both
+                traditional attire and contemporary styles.</p>
+            </div>
+          </div>
+          <div *ngIf="activeTab === 2">
+            <table class="w-full border border-gray-300 rounded-lg overflow-hidden">
+              <tbody>
+                <tr *ngFor="let item of specifications" class="border-b border-eee last:border-0">
+                  <td
+                    class="p-1 sm:p-2 lg:px-3 lg:py-2 text-[13px] sm:text-sm lg:text-base bg-gray-50 font-medium text-08503f w-1/3">
+                    {{ item.label }}
+                  </td>
+                  <td class="p-1 sm:p-2 lg:px-3 lg:py-2 text-[13px] sm:text-sm lg:text-base text-gray-700">
+                    {{ item.value }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="activeTab === 3">
+            <ul class="list-disc pl-6 space-y-2 text-sm md:text-base text-gray-700">
+              <li>Orders are dispatched within 1–2 working days after confirmation.
+              </li>
+              <li>Delivery usually takes 3–5 working days for metro cities and 5–7 working days for other locations.
+              </li>
+              <li>Free shipping is available on all prepaid orders.</li>
+              <li>Jewellery is delivered in secure, tamper-proof packaging to ensure
+                safety.</li>
+              <li>A tracking link is shared via SMS/Email once the order is shipped.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Zoom Modal -->
+<div *ngIf="zoomOpen" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+  <button (click)="closeZoom()" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+  <button (click)="prevImage()" class="absolute left-4 text-white text-4xl">&#10094;</button>
+  <img [src]="thumbnails[zoomIndex]" class="max-h-[90%] max-w-[90%] object-contain rounded-lg">
+  <button (click)="nextImage()" class="absolute right-4 text-white text-4xl">&#10095;</button>
+</div>

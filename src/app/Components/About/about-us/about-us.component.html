@@ -1,0 +1,59 @@
+<!-- about us section -->
+<section class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3">
+    <!-- about us image -->
+    <div class="p-6 w-full">
+      <img class="w-full rounded-lg" src="/assets/images/about/about-us.png" alt="about us">
+    </div>
+    <!-- about us content -->
+    <div class="p-6 w-full flex items-center justify-center flex-col">
+      <h1 class="relative inline-block text-b37800 font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2
+         after:-bottom-2 after:w-28 lg:after:w-48 after:h-0.5 after:bg-b37800 after:rounded">About Us</h1>
+      <p class="font-normal text-xs sm:text-sm md:text-base lg:text-lg text-4d4c4c text-center mt-8">Amidst the sparkle
+        and shimmer, our brand stands out with its commitment to capturing the essence of sophistication in every
+        creation. Each piece is a testament to timeless beauty, meticulously crafted to adorn moments that matter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Our Mission Section -->
+<section class="w-full bg-f9f9f9 py-6 md:py-8 lg:py-10 px-4 sm:px-6 lg:px-20">
+  <h3 class="relative flex justify-center text-b37800 font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2
+         after:-bottom-2 after:w-28 lg:after:w-48 after:h-0.5 after:bg-b37800 after:rounded">Our Mission</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5 lg:gap-6 xl:gap-10
+         mt-6 md:mt-6 lg:mt-8 xl:mt-10">
+
+    <!-- Card -->
+    <div *ngFor="let card of features" class="group relative bg-white text-center border border-eeeeee p-6 sm:p-3 md:p-6 lg:p-8
+           rounded-xl shadow-sm transition-all duration-300
+           hover:-translate-y-1 hover:shadow-lg">
+
+      <p class="text-lg md:text-xl lg:text-2xl mb-3 font-semibold text-1c1c1c">
+        {{ card.title }}
+      </p>
+
+      <p class="font-normal text-xs sm:text-sm md:text-base text-4d4c4c leading-relaxed">
+        {{ card.description }}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- our story section -->
+<section class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3">
+    <!-- Our Story content -->
+    <div class="p-6 w-full flex items-center justify-center flex-col">
+      <h3 class="relative inline-block text-b37800 font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2
+         after:-bottom-2 after:w-28 lg:after:w-48 after:h-0.5 after:bg-b37800 after:rounded">Our Story</h3>
+      <p class="font-normal text-xs sm:text-sm md:text-base lg:text-lg text-4d4c4c text-center mt-8">Our story is one of
+        passion, where every diamond is handpicked, every metal is ethereally shaped, and every design tells a unique
+        story. It’s not just jewelry; it’s an heirloom that carries the legacy of beauty across generations.</p>
+    </div>
+    <!-- Our Story image -->
+    <div class="p-6 w-full">
+      <img class="w-full rounded-lg" src="/assets/images/about/about-us1.png" alt="about us">
+    </div>
+  </div>
+</section>

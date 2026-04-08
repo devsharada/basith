@@ -1,0 +1,257 @@
+<!-- ./admin-markets.component.html -->
+<div class="p-1 bg-gray-50 min-h-screen">
+
+  <!-- HEADER STRUCTURE: Menu Icon Left, User Icon Right on Mobile. Desktop is ORIGINAL. -->
+  <!-- CHANGE: Added flex-col on mobile, flex-row on small screens and up, space-y-4 for vertical stack on mobile -->
+  <header class="flex justify-between items-center mb-6">
+
+    <!-- Mobile Left Item (Sidebar/Menu Icon) - HIDDEN ON DESKTOP -->
+    <button class="sm:hidden text-gray-500 hover:text-gray-800 p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <!-- Search Bar: HIDDEN on mobile, original restricted width on sm and up -->
+    <div
+      class="hidden sm:flex items-center w-full max-w-sm bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200">
+      <!-- Search Icon -->
+      <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"></path>
+      </svg>
+      <!-- Input Field -->
+      <input type="text" placeholder="Search..."
+        class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none" />
+    </div>
+
+    <!-- User Profile Area (Top Right on Mobile, Right on Desktop) -->
+    <!-- Used 'flex items-center space-x-6' to ensure the original desktop layout remains -->
+    <div class="flex items-center space-x-6">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200 border border-gray-400">
+          <img src="https://cdn-icons-png.flaticon.com/128/4140/4140037.png" alt="User"
+            class="object-cover w-full h-full" />
+        </div>
+        <!-- Hide the name on mobile, show on sm/desktop -->
+        <span class="hidden sm:inline text-sm font-medium">(User)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- H1 (Desktop) / Mobile Title (New Position) -->
+  <!-- Mobile: Aligns Title left, below the Menu Icon -->
+  <h1 class="text-2xl font-bold mb-3 sm:mb-6 px-1 sm:px-0">
+    <span class="block sm:hidden text-xl">Market</span>
+    <span class="hidden sm:block">Market</span>
+  </h1>
+
+  <!-- Mobile-Only Search Bar (Full Width, with original styling) -->
+  <div
+    class="sm:hidden flex items-center w-full bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:border-gray-400 transition-all duration-200 mb-6 -mt-2.5">
+    <svg class="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z">
+      </path>
+    </svg>
+    <input type="text" placeholder="Search..."
+      class="w-full bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none" />
+  </div>
+
+  <!-- Top Filters and Actions Row (Made responsive to stack on mobile) -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
+    <!-- Left Side: Timeframe/Channels/Visitors (Full width on mobile) -->
+    <div class="flex items-center space-x-3 text-sm rounded-md bg-[#FFFFFF] p-2">
+      <button class=" bg-032b76 text-white px-4 py-1.5 rounded-lg font-medium shadow-md">Last 30 Days</button>
+      <span class="text-gray-600 flex items-center">
+        Live Visitors
+        <span class="w-2 h-2 bg-[#25C470] rounded-full ml-2 mr-1 animate-pulse"></span>
+        <span class="text-[#25C470] font-semibold">2.5k</span>
+      </span>
+    </div>
+
+    <!-- Right Side: Date Picker and Actions (Made to stack/wrap neatly on mobile) -->
+    <div
+      class="flex flex-wrap sm:flex-nowrap items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
+      <!-- Date Range Picker -->
+      <div class="flex items-center p-2 bg-white rounded-lg border border-gray-300 w-full sm:w-auto">
+        <!-- Start Date Input (Reduced width on mobile) -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pr-0.5 w-20 sm:w-28 cursor-pointer"
+          value="2025-09-20" title="Select Start Date" />
+
+        <!-- Separator -->
+        <span class="text-gray-500 font-light mx-0.5">–</span>
+
+        <!-- End Date Input (Reduced width on mobile) -->
+        <input type="date"
+          class="appearance-none bg-transparent border-none focus:ring-0 text-gray-800 text-sm font-medium p-0 pl-0.5 w-20 sm:w-28 cursor-pointer"
+          value="2025-10-09" title="Select End Date" />
+      </div>
+
+
+      <!-- Export/Filter Buttons Group (Wrapped/Stacked on mobile) -->
+      <div class="flex space-x-2 w-full sm:w-auto justify-end">
+        <!-- Export Button -->
+        <button
+          class="text-gray-700 text-sm font-medium px-3 py-2 border border-gray-300 rounded-lg bg-white flex items-center space-x-1 hover:bg-gray-50 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>Export</span>
+        </button>
+
+        <!-- Filter Button -->
+        <button
+          class="text-gray-700 text-sm font-medium px-3 py-2 border border-gray-300 rounded-lg bg-white flex items-center space-x-1 hover:bg-gray-50 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 12.414V16a1 1 0 01-1.554.832l-3-2A1 1 0 018 14v-1.586l-7.707-7.707A1 1 0 013 4z" />
+          </svg>
+          <span>Filter</span>
+        </button>
+      </div>
+
+      <!-- More Action Dropdown Button (Dark Blue) -->
+      <button class="bg-[#0A2C6C] text-white text-sm font-medium px-4 py-2 rounded-lg shadow-sm w-full sm:w-auto">More
+        Action</button>
+
+      <!-- Add Product Button (Dark Blue with Plus Icon) -->
+      <button
+        class="bg-[#0A2C6C] text-white text-sm font-medium px-4 py-2 rounded-lg shadow-sm flex items-center space-x-2 w-full sm:w-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Add Product</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search, Tabs, and View Toggles Row (Made responsive to stack on mobile) -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-0 space-y-4 sm:space-y-0">
+    <div class="flex flex-col space-y-4 w-full sm:w-auto order-2 sm:order-0">
+      <!-- Search Input (Full width on mobile) -->
+      <input type="text" placeholder="Search"
+        class="w-full sm:w-64 pl-4 pr-4 py-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:ring-[#0A2C6C] focus:border-[#0A2C6C] shadow-sm">
+
+      <!-- Tabs (Wrapped on mobile) -->
+      <div class="flex flex-wrap space-x-1">
+        <button
+          [ngClass]="{'bg-[#0A2C6C] text-white': activeTab === 'All', 'text-gray-700 hover:bg-gray-100': activeTab !== 'All'}"
+          class="text-sm font-medium px-4 py-1.5 rounded-lg transition-colors mb-1"
+          (click)="activeTab = 'All'">All</button>
+        <button
+          [ngClass]="{'bg-[#0A2C6C] text-white': activeTab === 'Active', 'text-gray-700 hover:bg-gray-100': activeTab !== 'Active'}"
+          class="text-sm font-medium px-4 py-1.5 rounded-lg transition-colors mb-1"
+          (click)="activeTab = 'Active'">Active</button>
+        <button
+          [ngClass]="{'bg-[#0A2C6C] text-white': activeTab === 'Draft', 'text-gray-700 hover:bg-gray-100': activeTab !== 'Draft'}"
+          class="text-sm font-medium px-4 py-1.5 rounded-lg transition-colors mb-1"
+          (click)="activeTab = 'Draft'">Draft</button>
+        <button
+          [ngClass]="{'bg-[#0A2C6C] text-white': activeTab === 'Archived', 'text-gray-700 hover:bg-gray-100': activeTab !== 'Archived'}"
+          class="text-sm font-medium px-4 py-1.5 rounded-lg transition-colors mb-1"
+          (click)="activeTab = 'Archived'">Archived</button>
+      </div>
+    </div>
+
+    <!-- View Toggles (Grid and List) (Order-1 to appear above tabs on mobile) -->
+    <div class="flex items-center space-x-2 order-1 sm:order-0">
+      <!-- Grid View (Active/Dark) -->
+      <button class="text-[#0A2C6C]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+        </svg>
+      </button>
+      <!-- List View (Inactive/Light) -->
+      <button class="text-gray-400 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Market List Table -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 mt-4">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <!-- Table Header (Light Blueish Gray Background) -->
+        <thead class="bg-gray-100 text-gray-500 text-sm font-medium">
+          <tr>
+            <!-- Min-widths added to columns to force scroll on small screens -->
+            <th class="py-3 px-6 text-left whitespace-nowrap min-w-30">
+              <div class="flex items-center space-x-1 cursor-pointer">
+                <span>Market</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                </svg>
+              </div>
+            </th>
+            <th class="py-3 px-6 text-left whitespace-nowrap min-w-25">
+              <div class="flex items-center space-x-1 cursor-pointer">
+                <span>Status</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                </svg>
+              </div>
+            </th>
+            <th class="py-3 px-6 text-left whitespace-nowrap min-w-37.5">Included</th>
+            <th class="py-3 px-6 text-left whitespace-nowrap min-w-37.5">Customizations</th>
+            <th class="py-3 px-6 text-left whitespace-nowrap min-w-12.5">-</th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody class="divide-y divide-gray-200 text-gray-700">
+          <tr *ngFor="let market of marketData" class="hover:bg-gray-50 transition-colors">
+            <!-- Market Column (Globe IMG + Text) -->
+            <td class="py-3 px-6 whitespace-nowrap">
+              <div class="flex items-center space-x-2 text-lg font-medium text-[#1A202C]">
+                <!-- Replaced SVG with IMG placeholder for Market Icon -->
+                <img [src]="market.marketIconUrl" alt="{{ market.marketName }} Icon" class="h-5 w-5">
+
+                <span>{{ market.marketName }}</span>
+              </div>
+            </td>
+            <!-- Status Column (Active Pill) -->
+            <td class="py-3 px-6 whitespace-nowrap">
+              <!-- Status Pill (Active is Dark Blue) -->
+              <span *ngIf="market.status === 'Active'"
+                class="bg-[#0A2C6C] text-white text-xs font-medium px-3 py-1 rounded-full">{{ market.status }}</span>
+              <span *ngIf="market.status !== 'Active'"
+                class="bg-gray-200 text-gray-700 text-xs font-medium px-3 py-1 rounded-full">{{ market.status }}</span>
+            </td>
+            <!-- Included Column (Flag IMG + Text) -->
+            <td class="py-3 px-6 whitespace-nowrap">
+              <div class="flex items-center space-x-2">
+                <!-- Flag Icon Placeholder with [src] binding -->
+                <img [src]="market.iconUrl" alt="{{ market.included }} Flag" class="h-5 w-5 rounded-sm shadow-sm">
+
+                <span class="text-gray-700">{{ market.included }}</span>
+              </div>
+            </td>
+            <!-- Customizations Column (Text/Symbol) -->
+            <td class="py-3 px-6 whitespace-nowrap text-gray-700">
+              {{ market.customizations }}
+            </td>
+            <!-- Last Column (Ellipsis) -->
+            <td class="py-3 px-6 whitespace-nowrap">
+              <button class="text-gray-500 leading-none text-xl font-bold">...</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

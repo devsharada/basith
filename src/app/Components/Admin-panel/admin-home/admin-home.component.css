@@ -1,0 +1,67 @@
+/* Define the scrolling keyframes */
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.auto-scrolling-content {
+  animation: scroll-up 20s linear infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional: Pause animation on hover */
+.auto-scrolling-container:hover .auto-scrolling-content {
+  animation-play-state: paused;
+}
+
+
+/* for progress chart */
+.greeting-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.greeting-card h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.greeting-card p {
+  color: #4a3be4;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.progress-container {
+  position: relative;
+  display: inline-block;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.percentage-label {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}

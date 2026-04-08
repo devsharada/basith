@@ -1,0 +1,74 @@
+<section class="w-full bg-f9f9f9 py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+
+  <!-- Decorative Element -->
+  <div class="flex items-center justify-center space-x-1 sm:space-x-1.5 mb-2">
+    <!-- Left Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+    <!-- center flower -->
+    <img class="w-6.25 h-6.25 sm:w-7.5 sm:h-7.5" src="/assets/images/home/flower.png" alt="flower">
+    <!-- Right Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+  </div>
+
+  <!-- Title and Subtitle -->
+  <div class="text-center">
+    <p class="text-1c1c1c capitalize text-sm md:text-base lg:text-xl xl:text-2xl font-medium mb-0.5">Our</p>
+    <h1
+      class="text-xl/tight sm:text-2xl/tight md:text-3xl/tight lg:text-4xl/tight xl:text-5xl/tight font-medium capitalize text-b37800">
+      Customer Reviews</h1>
+  </div>
+
+
+  <div class="relative mt-4 md:mt-6 lg:mt-8 xl:mt-10">
+    <!-- Testimonial Cards: Iterated using *ngFor -->
+    <ng-container *ngFor="let review of reviews; let i = index">
+      <div
+        class="bg-[#FFFFFF] rounded-xl shadow-lg max-w-6xl mx-auto p-6 sm:p-10 md:p-12 transition-opacity duration-500"
+        [hidden]="i !== currentIndex">
+        <div class="text-center">
+
+          <!-- Review Text -->
+          <p class="text-sm sm:text-base md:text-lg italic 1C1C1C] max-w-2xl mx-auto leading-relaxed">
+            "{{ review.quote }}"
+          </p>
+
+          <!-- Star Rating (Hardcoded 5 Gold Stars for visual match) -->
+          <div class="flex justify-center my-6 md:my-8 space-x-1 sm:space-x-2">
+            <!-- Using *ngFor for the 5 stars -->
+            <svg *ngFor="let star of [1,2,3,4,5]" class="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#FFC107]"
+              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.177 3.605 3.793.262c.96.066 1.348 1.284.588 1.848l-2.844 2.062 1.107 3.69c.287.957-.756 1.76-1.574 1.258L10 14.076l-3.218 2.043c-.818.502-1.861-.297-1.574-1.258l1.107-3.69L2.588 8.642c-.76-.564-.373-1.782.588-1.848l3.793-.262L9.049 2.927z" />
+            </svg>
+          </div>
+
+          <!-- User Profile -->
+          <div class="flex items-center justify-center space-x-2 lg:space-x-4">
+            <!-- Avatar/Initials -->
+            <div
+              class="w-11 h-11 md:w-13 md:h-13 lg:w-16 lg:h-16 rounded-full flex items-center justify-center font-bold text-xl sm:text-2xl text-white"
+              style="background: linear-gradient(180deg, rgba(185, 68, 94, 0.77) 0%, #531F2A 100%);">
+              {{ review.initials }}
+            </div>
+
+            <!-- Name and Location -->
+            <div class="text-left">
+              <p class="text-base md:text-lg lg:text-xl font-semibold text-1c1c1c">{{ review.name }}</p>
+              <p class="text-xs md:text-sm text-gray-500">{{ review.location }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Carousel Dots/Paginator -->
+    <div class="flex justify-center space-x-2 mt-8 md:mt-10">
+      <!-- Using *ngFor to dynamically create dots based on the number of reviews -->
+      <div *ngFor="let dot of dots; let i = index" (click)="goToSlide(i)"
+        class="w-2 h-2 rounded-full cursor-pointer transition-colors duration-300" [ngClass]="{
+    'bg-gray-900': i === currentIndex,
+    'bg-gray-300': i !== currentIndex
+  }"></div>
+    </div>
+  </div>
+</section>

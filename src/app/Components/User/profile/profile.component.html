@@ -1,0 +1,93 @@
+<div>
+  <!-- User Name and Edit Button -->
+  <!-- This section is already responsive due to 'flex justify-between' and the nature of the content -->
+  <div class="flex justify-between items-start mb-6">
+    <div>
+      <h2 class="text-xl font-semibold text-1c1c1c">Joy Lawson</h2>
+      <p class="text-sm text-1c1c1c">joylawsongmail.com</p>
+    </div>
+    <!-- Edit Button with the exact specified color #B9445E -->
+    <button class="cursor-pointer bg-b37800 hover:bg-b37800/80 text-white font-semibold py-2 px-6 rounded-md transition duration-150 ease-in-out text-sm">
+      Edit
+    </button>
+  </div>
+
+  <!-- Personal Details Form -->
+  <form class="space-y-6">
+    <!-- Row 1: Full Name & Gender -->
+    <!-- CHANGE: Default to grid-cols-1 for mobile, switch to md:grid-cols-2 for tablet/desktop -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <!-- Full Name -->
+      <div>
+        <label for="fullName" class="block text-sm font-medium text-1c1c1c mb-1">Full Name</label>
+        <!-- Input styling matching the image: light background, rounded, minimal border -->
+        <input type="text" id="fullName" placeholder="Your Full Name" class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+      </div>
+      <!-- Gender -->
+      <div>
+        <label for="gender" class="block text-sm font-medium text-1c1c1c mb-1">Gender</label>
+        <input type="text" id="gender" placeholder="Your Gender" class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+      </div>
+    </div>
+
+    <!-- Row 2: DOB & Email -->
+    <!-- CHANGE: Default to grid-cols-1 for mobile, switch to md:grid-cols-2 for tablet/desktop -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <!-- DOB (Dropdown visual) -->
+      <div>
+        <label for="dob" class="block text-sm font-medium text-1c1c1c mb-1">DOB</label>
+        <div class="relative">
+          <!-- Input styling matching the image -->
+          <input type="text" id="dob" placeholder="Your DOB" class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 pr-10 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+          <!-- Dropdown Icon -->
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </div>
+        </div>
+      </div>
+      <!-- Email (Dropdown visual, though an email field usually isn't) -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-1c1c1c mb-1">Email ID</label>
+        <div class="relative">
+          <input type="text" id="email" placeholder="Your Email ID" class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 pr-10 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+          <!-- Dropdown Icon -->
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Mobile Number & Alternate Mobile Number -->
+    <!-- CHANGE: Default to grid-cols-1 for mobile, switch to md:grid-cols-2 for tablet/desktop -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <!-- Mobile Number (Dropdown visual) -->
+      <div>
+        <label for="mobile" class="block text-sm font-medium text-1c1c1c mb-1">Mobile Number</label>
+        <div class="relative">
+          <input type="text" id="mobile" placeholder="Your Mobile No." class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 pr-10 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+          <!-- Dropdown Icon -->
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </div>
+        </div>
+      </div>
+      <!-- Alternate Mobile Number (Dropdown visual) -->
+      <div>
+        <label for="altMobile" class="block text-sm font-medium text-1c1c1c mb-1">Alternate Mobile Number</label>
+        <div class="relative">
+          <input type="text" id="altMobile" placeholder="Your Alt. Mobile No." class="mt-1 block w-full border border-d9d8d8 rounded-md  py-2.5 px-2 pr-10 text-1c1c1c  focus:outline-none focus:ring-b37800 focus:border-b37800" readonly>
+          <!-- Dropdown Icon -->
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add More Link -->
+    <a href="#" class="inline-block text-b37800 text-sm hover:text-b37800/80 font-medium mt-2">
+      +Add More
+    </a>
+  </form>
+</div>

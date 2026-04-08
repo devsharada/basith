@@ -1,0 +1,235 @@
+<!-- Main container for the checkout page -->
+<div class="p-4 sm:p-6 md:p-10 bg-f9f9f9 min-h-screen">
+  <!-- CHANGE 1: Changed background to a very light gray for better contrast -->
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+    <!-- Left Column: Your order -->
+    <div class="lg:pr-10">
+      <h1 class="text-3xl text-1c1c1c  mb-6">Your order</h1>
+
+      <!-- Order Items Container -->
+      <div class="space-y-4 mb-6">
+        <!-- Loop through each order item -->
+        <!-- CHANGE 2: Added a subtle shadow (shadow-sm) and made the border darker (border-gray-200) -->
+        <div *ngFor="let item of orderItems"
+          class="sm:flex items-center justify-between p-2 sm:p-4 bg-white rounded-lg border border-d9d8d8 shadow-sm">
+          <div class="flex items-center">
+            <img [src]="item.imageUrl" [alt]="item.name" class="w-20 h-20 object-cover mr-4">
+            <div>
+              <p class=" text-base">{{ item.name }}</p>
+              <p class=" text-sm text-gray-500">Size: {{ item.size }} | Metal: {{ item.metal }}</p>
+
+              <!-- Quantity Selector -->
+              <div class="flex items-center text-sm mt-1">
+                <span class="cursor-pointer text-gray-400 select-none" (click)="decreaseQuantity(item)">-</span>
+                <span class="mx-2 text-gray-700">{{ item.quantity }}</span>
+                <span class="cursor-pointer text-gray-400 select-none" (click)="increaseQuantity(item)">+</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex sm:flex-col items-end justify-end">
+            <!-- CORRECTION: Use item.basePrice -->
+            <span class="text-lg ">{{ currencySymbol }} {{ item.basePrice * item.quantity | number:'1.0-0'
+              }}</span>
+            <!-- Remove Button -->
+            <span class="ml-4 text-gray-400 cursor-pointer text-xl" (click)="removeItem(item)">×</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Discount Code Input -->
+      <div class="mb-6">
+        <p class=" text-sm text-b37800 mb-2">Discount Code</p>
+        <div class="flex border border-b37800 rounded-lg overflow-hidden bg-white">
+          <div class="flex items-center px-3 bg-red-50 text-b37800">
+            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 7h.01M7 3h.01M7 11h.01M17 3h.01M17 7h.01M17 11h.01M12 3h.01M12 7h.01M12 11h.01M7 15h.01M7 19h.01M17 15h.01M17 19h.01M12 15h.01M12 19h.01">
+              </path>
+            </svg>
+          </div>
+          <input type="text" placeholder="Enter discount code" class="w-full p-2 focus:outline-none "
+            [(ngModel)]="discountCodeInput" name="discountCodeInput">
+          <!-- Apply discount button -->
+          <button class="cursor-pointer px-2 sm:px-4 text-b37800 text-sm whitespace-nowrap"
+            (click)="applyDiscount()">Apply</button>
+        </div>
+      </div>
+
+
+      <!-- Pricing Summary -->
+      <div class="space-y-3 pt-4 border-t border-gray-200">
+        <!-- CORRECTION: Use getter subtotal -->
+        <div class="flex justify-between  text-gray-600">
+          <span>Subtotal</span>
+          <span class="">{{ currencySymbol }} {{ subtotal | number:'1.0-0' }}</span>
+        </div>
+        <!-- CORRECTION: Use shippingCost -->
+        <div class="flex justify-between  text-gray-600">
+          <span>Shipping Cost</span>
+          <span class="">{{ currencySymbol }} {{ shippingCost | number:'1.0-0' }}</span>
+        </div>
+        <!-- CORRECTION: Use discountAmount and discountPercentageDisplay -->
+        <div class="flex justify-between  text-gray-600" *ngIf="appliedDiscount">
+          <span>Discount{{ discountPercentageDisplay }}</span>
+          <span class=" text-red-600">- {{ currencySymbol }} {{ discountAmount | number:'1.0-0' }}</span>
+        </div>
+        <!-- CORRECTION: Use getter total -->
+        <div class="flex justify-between  text-lg pt-2 border-t border-gray-200 mt-3">
+          <span>Total</span>
+          <span class=" text-xl">{{ currencySymbol }} {{ total | number:'1.0-0' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Checkout Form -->
+    <div class="lg:pl-10">
+      <!-- CORRECTION: Bind form submission to submitOrder() -->
+      <form class="space-y-6" (ngSubmit)="submitOrder()">
+
+        <!-- Email -->
+        <div>
+          <label class="block  text-gray-700 mb-1" for="email">Email</label>
+          <!-- CHANGE 4: Added shadow-sm to input fields -->
+          <input type="email" id="email" [(ngModel)]="formData.email" name="email"
+            class="w-full p-3 bg-white border border-gray-300 rounded-lg outline-0 focus:ring-1 focus:ring-b37800 focus:border-b37800 shadow-sm">
+        </div>
+
+        <!-- Phone number -->
+        <div>
+          <label class="block  text-gray-700 mb-1" for="phone">Phone number</label>
+          <!-- CHANGE 4: Added shadow-sm to input fields -->
+          <div class="bg-white flex items-center w-full p-3 border border-gray-300 outline-0 focus-within:ring-1 focus-within:ring-b37800 focus-within:border-b37800 rounded-lg shadow-sm">
+            <span class="flex items-center mr-2 text-gray-700">
+              <span class="mr-1">🇮🇳</span> <!-- Indian Flag -->
+              <!-- CORRECTION: Use formData.countryCode -->
+              <span class="">({{ formData.countryCode }})</span>
+            </span>
+            <!-- CORRECTION: Bind using [(ngModel)] and add name attribute -->
+            <input type="tel" id="phone" [(ngModel)]="formData.phoneNumber" name="phoneNumber"
+              class="grow focus:outline-none focus:border-b37800">
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <label class="block  text-gray-700" for="payment">Payment method</label>
+            <a href="#" class="text-red-600 text-sm ">+ Add new</a>
+          </div>
+          <div class="sm:flex sm:space-x-4">
+            <!-- Visa Selected -->
+            <!-- CHANGE 5: Added shadow-sm to payment method labels -->
+            <label class="flex items-center p-4 border rounded-lg cursor-pointer bg-white shadow-sm mb-2 sm:mb-0"
+              [style.border-color]="formData.selectedPaymentMethod === 'visa' ? '#b37800' : 'gray'">
+              <input type="radio" name="payment-method" class="hidden" value="visa"
+                [(ngModel)]="formData.selectedPaymentMethod">
+              <div class="flex flex-col">
+                <span class="flex items-center text-sm ">
+                  <!-- Custom radio button look -->
+                  <span class="w-3.5 h-3.5 border rounded-full mr-2 shrink-0 flex items-center justify-center"
+                    [class.border-b37800]="formData.selectedPaymentMethod === 'visa'"
+                    [class.border-gray-400]="formData.selectedPaymentMethod !== 'visa'">
+                    <span class="w-1.5 h-1.5 bg-b37800 rounded-full"
+                      *ngIf="formData.selectedPaymentMethod === 'visa'"></span>
+                  </span>
+                  **** 8304
+                </span>
+                <span class="text-xs  text-gray-500 mt-1">Visa • <a href="#"
+                    class="text-xs text-b37800">Edit</a></span>
+              </div>
+              <!-- Placeholder Visa Logo -->
+              <span class="ml-4">
+                <img src="https://cdn-icons-png.flaticon.com/128/5968/5968397.png" alt="Visa" class="w-8 h-8">
+              </span>
+            </label>
+
+            <!-- Paypal Option -->
+            <!-- CHANGE 5: Added shadow-sm to payment method labels -->
+            <label class="flex items-center p-4 border rounded-lg cursor-pointer bg-white shadow-sm"
+              [style.border-color]="formData.selectedPaymentMethod === 'paypal' ? '#b37800' : 'gray'">
+              <input type="radio" name="payment-method" class="hidden" value="paypal"
+                [(ngModel)]="formData.selectedPaymentMethod">
+              <div class="flex flex-col">
+                <span class="flex items-center text-sm ">
+                  <!-- Custom radio button look -->
+                  <span class="w-3.5 h-3.5 border rounded-full mr-2 shrink-0 flex items-center justify-center"
+                    [class.border-b37800]="formData.selectedPaymentMethod === 'paypal'"
+                    [class.border-gray-400]="formData.selectedPaymentMethod !== 'paypal'">
+                    <span class="w-1.5 h-1.5 bg-b37800 rounded-full"
+                      *ngIf="formData.selectedPaymentMethod === 'paypal'"></span>
+                  </span>
+                  **** 8304
+                </span>
+                <span class="text-xs  text-gray-500 mt-1">Paypal • <a href="#"
+                    class="text-xs text-red-600">Edit</a></span>
+              </div>
+              <!-- Placeholder Paypal Logo -->
+              <span class="ml-4">
+                <img src="https://cdn-icons-png.flaticon.com/128/888/888871.png" alt="PayPal" class="w-8 h-8">
+              </span>
+
+            </label>
+          </div>
+        </div>
+
+        <!-- Card holder name -->
+        <div>
+          <label class="block  text-gray-700 mb-1" for="card-holder">Card holder name</label>
+          <!-- CHANGE 4: Added shadow-sm to input fields -->
+          <input type="text" id="card-holder" placeholder="Ex. Jane Cooper" [(ngModel)]="formData.cardHolderName"
+            name="cardHolderName"
+            class="bg-white w-full p-3 border border-gray-300 rounded-lg outline-0 focus:ring-1 focus:ring-b37800 focus:border-b37800 shadow-sm">
+        </div>
+
+        <!-- Billing address - Country -->
+        <div>
+          <label class="block  text-gray-700 mb-1" for="country">Billing address</label>
+          <!-- CHANGE 4: Added shadow-sm to input fields -->
+          <select id="country" [(ngModel)]="formData.billingCountry" name="billingCountry"
+            class="w-full p-3 border border-gray-300 outline-0 focus:ring-1 focus:ring-b37800 focus:border-b37800 rounded-lg appearance-none bg-white shadow-sm">
+            <option>United States</option>
+            <!-- Other options -->
+          </select>
+        </div>
+
+        <!-- Zip code and City -->
+        <div class="flex space-x-4">
+          <div class="flex-1">
+            <label class="block  text-gray-700 mb-1" for="zip">Zip code</label>
+            <!-- CHANGE 4: Added shadow-sm to input fields -->
+            <input type="text" id="zip" placeholder="Ex. 73923" [(ngModel)]="formData.zipCode" name="zipCode"
+              class="bg-white w-full p-3 border border-gray-300 rounded-lg outline-0 focus:ring-1 focus:ring-b37800 focus:border-b37800 shadow-sm">
+          </div>
+          <div class="flex-1">
+            <label class="block  text-gray-700 mb-1" for="city">City</label>
+            <!-- CHANGE 4: Added shadow-sm to input fields -->
+            <input type="text" id="city" placeholder="Ex. New York" [(ngModel)]="formData.city" name="city"
+              class="bg-white w-full p-3 border border-gray-300 rounded-lg outline-0 focus:ring-1 focus:ring-b37800 focus:border-b37800 shadow-sm">
+          </div>
+        </div>
+
+        <!-- Checkbox: Billing address is same as shipping -->
+        <div class="flex items-center pt-2">
+          <!-- CORRECTION: Bind using [(ngModel)] and add name attribute -->
+          <input id="same-as-shipping" type="checkbox" [(ngModel)]="formData.billingSameAsShipping"
+            name="billingSameAsShipping" class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+            style="color: #a54058;">
+          <label for="same-as-shipping" class="ml-2 block  text-sm text-gray-700">
+            Billing address is same as shipping
+          </label>
+        </div>
+
+        <!-- Pay Button -->
+        <!-- CORRECTION: Button type is submit. Show calculated total. -->
+        <button type="submit"
+          class="w-full py-3 text-white bg-b37800 rounded-lg hover:opacity-90 transition duration-150 ease-in-out text-lg shadow-md">
+          Pay {{ currencySymbol }} {{ total | number:'1.2-2' }}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

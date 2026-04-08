@@ -1,0 +1,108 @@
+<div class="w-full mx-auto">
+   <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    <h1 class="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-b37800 mb-4">Cart</h1>
+
+    <div class="w-full grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-6">
+      <div class="col-span-1 sm:col-span-2 space-y-4">
+        <div *ngFor="let item of cartItems; let i = index"
+          class="sm:flex items-start gap-4 p-2 sm:p-4 border border-d9d8d8 rounded-lg">
+
+         <div class="w-full flex items-start gap-4">
+           <!-- Product Image -->
+          <a [routerLink]="item.link" class="shrink-0">
+            <img [src]="item.image" [alt]="item.name"
+              class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-md shadow" />
+          </a>
+
+          <!-- Product Info -->
+          <div class="flex-1">
+            <a [routerLink]="item.link">
+              <p class=" text-1c1c1c text-sm sm:text-base xl:text-lg">
+                {{ item.name }}
+              </p>
+            </a>
+
+            <p class="text-xs sm:text-sm text-gray-600 mt-1">
+              Price: ₹ {{ item.price | number }}
+            </p>
+
+            <!-- Quantity Controls -->
+            <div class="flex items-center gap-2 mt-2">
+              <button (click)="decreaseQty(item)" class="size-6 flex items-center justify-center bg-gray-200 rounded">
+                −
+              </button>
+
+              <span class="min-w-6 text-center text-sm">
+                {{ item.quantity }}
+              </span>
+
+              <button (click)="increaseQty(item)" class="size-6 flex items-center justify-center bg-gray-200 rounded">
+                +
+              </button>
+            </div>
+          </div>
+         </div>
+
+          <!-- Price + Remove -->
+          <div class="flex sm:flex-col items-end justify-between h-full">
+            <p class="font-medium text-sm sm:text-base whitespace-nowrap">
+              ₹ {{ getItemTotal(item) | number }}
+            </p>
+
+            <button (click)="removeItem(i)" class="mt-4">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none">
+                <path d="M6 8V18C6 19.1 6.9 20 8 20H16C17.1 20 18 19.1 18 18V8M9 11V16M15 11V16M4 8H20M9 5H15"
+                  stroke="#c09d0d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="w-full mt-4 sm:mt-0 bg-ffeabe70 rounded-md shadow-sm p-5 ">
+        <p
+          class=" text-1c1c1c font-normal text-center text-base md:text-lg xl:text-2xl pb-3 border-b border-d9d8d8">
+          Order Total
+        </p>
+        <div class="space-y-1 mt-4 border-b border-d9d8d8 pb-4">
+          <div class="flex items-center justify-between text-1c1c1c font-normal text-xs sm:text-sm xl:text-base">
+            <p>Subtotal</p>
+            <p>₹ {{ getCartTotal() | number }}</p>
+          </div>
+          <div class="flex items-center justify-between text-1c1c1c font-normal text-xs sm:text-sm xl:text-base">
+            <p>Shipping</p>
+            <p>₹ {{ shippingCharge | number }}</p>
+          </div>
+          <div class="flex items-center justify-between text-1c1c1c font-normal text-xs sm:text-sm xl:text-base">
+            <p>Tax</p>
+            <p>₹ {{ tax | number }}</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-1c1c1c font-semibold text-lg xl:text-xl pt-4">
+          <p>Total</p>
+          <p>₹ {{ getFinalTotal() | number }}</p>
+        </div>
+        <button (click)="goToCheckout()"
+          class="relative cursor-pointer overflow-hidden mt-3 xl:mt-4 w-full py-2 xl:py-2 my-3 bg-08503f text-white text-base lg:text-lg xl:text-xl rounded-md transition-all duration-300 hover:scale-[1.02] bg-b37800">
+          Proceed to Checkout
+        </button>
+      </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Empty Cart -->
+  <ng-template #emptyCart>
+    <div class="bg-faf7f0 rounded-lg flex flex-col items-center justify-center h-full px-2 sm:px-4 py-10 text-center">
+      <img src="assets/images/home/shopping-bag.png" alt="Empty Cart" class="size-30 md:size-40 object-contain mb-8" />
+      <h2 class="text-xl lg:text-3xl text-1e1e1e font-normal mb-1">Your cart is empty</h2>
+      <p class="text-sm lg:text-base text-1e1e1e mb-8">Start shopping to add your favourite items.</p>
+
+      <a routerLink="/home"
+        class="relative overflow-hidden cursor-pointer block w-max py-2 xl:py-3 px-5 my-3 xl:mt-6 bg-08503f text-white text-base lg:text-lg rounded-md text-center border border-08503f transition-all duration-300 hover:scale-[1.02]
+  before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-white/20 before:skew-x-[-20deg] hover:before:left-full before:transition-all before:duration-500">
+        Continue Shopping</a>
+    </div>
+  </ng-template>
+</div>

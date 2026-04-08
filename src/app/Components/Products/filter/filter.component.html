@@ -1,0 +1,58 @@
+<div *ngIf="showFilters" class="border border-838383 rounded-lg bg-white p-2 shadow-sm h-fit">
+  <div>
+    <div *ngFor="let section of filters" class=" border-b border-b37800">
+      <!-- Accordion Header -->
+      <button class="w-full flex justify-between items-center px-2 py-2 rounded-md"
+        (click)="toggleSection(section.title)">
+        <span class="font-semibold text-222222 text-sm md:text-base">{{ section.title }}</span>
+        <span>
+          <svg [ngClass]="{ 'rotate-180': openSections[section.title] }" class="w-4 h-4 transition-transform"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </button>
+
+      <!-- Accordion Content -->
+      <div *ngIf="openSections[section.title]" class="px-2 py-2 space-y-1">
+        <div *ngIf="section.type === 'checkbox'" class="space-y-1.5">
+          <label *ngFor="let opt of section.options" class="flex items-center space-x-2">
+            <input type="checkbox" [(ngModel)]="opt.checked" (change)="onCheckboxChange(section.title, opt)"
+              class="w-4 h-4 border border-b37800 accent-b37800 rounded" />
+            <span class="text-xs md:text-sm text-222222">{{ opt.label }}</span>
+          </label>
+        </div>
+
+        <div *ngIf="section.type === 'range'" class="space-y-2">
+          <div class="flex justify-between gap-2 text-sm text-1c1c1c mb-2">
+            <input type="number" class="w-1/2 border rounded px-2 py-1 focus:border-b37800 focus:outline-none" [(ngModel)]="section.minValue"
+              [min]="section.minLimit || 0" [max]="section.maxValue" />
+            <input type="number" class="w-1/2 border rounded px-2 py-1 focus:border-b37800 focus:outline-none" [(ngModel)]="section.maxValue"
+              [min]="section.minValue" [max]="section.maxLimit || 100000" />
+          </div>
+
+          <div class="relative h-2 w-full bg-fec00f40 rounded">
+            <!-- Selected range highlight -->
+            <div class="absolute h-2 bg-b37800 rounded" [ngStyle]="{
+        'left.%': ((section.minValue||0)/(section.maxLimit||100000))*100,
+        'right.%': 100 - ((section.maxValue||100000)/(section.maxLimit||100000))*100
+      }">
+            </div>
+
+            <!-- Invisible range sliders for dragging -->
+            <input type="range" class="absolute w-full h-2 opacity-0" [(ngModel)]="section.minValue"
+              [min]="section.minLimit || 0" [max]="section.maxLimit || 100000"
+              (input)="onRangeChange(section, 'min')" />
+            <input type="range" class="absolute w-full h-2 opacity-0" [(ngModel)]="section.maxValue"
+              [min]="section.minLimit || 0" [max]="section.maxLimit || 100000"
+              (input)="onRangeChange(section, 'max')" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="w-full cursor-pointer mt-3 rounded-lg bg-b37800 text-white py-1.5 text-sm" (click)="onApply()">
+      Apply Filters
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+  <!-- Title section -->
+  <h2
+    class="capitalize text-xl/tight sm:text-2xl/tight md:text-3xl/tight lg:text-4xl/tight xl:text-5xl/tight font-semibold text-center text-b37800">
+    Jewellery Size Guide</h2>
+
+  <div class="w-full mt-6 lg:mt-8">
+    <p class="text-1c1c1c space-y-2 text-xs/relaxed sm:text-sm/relaxed md:text-base/relaxed xl:text-[17px]/relaxed">We want every piece you wear to feel as perfect as it looks. Our Size Guide is designed to help you find the
+      ideal fit for your rings, bangles, bracelets, and necklaces — ensuring comfort, elegance, and confidence with
+      every purchase</p>
+
+    <!-- Tab Navigation -->
+    <div class="p-2 bg-f8f8f8 rounded-lg w-full max-w-xl flex items-center justify-center gap-2 mx-auto mt-6 lg:mt-8 xl:mt-10">
+      <a routerLink="ring" routerLinkActive="bg-b37800 text-white" [routerLinkActiveOptions]="{ exact: true }"
+        class="cursor-pointer whitespace-nowrap text-1c1c1c w-max block flex-1 py-3 px-3 text-center transition-colors font-kaisei text-sm sm:text-base md:text-lg lg:text-xl xl:text-[21px] rounded-lg">
+        Ring Size Guide
+      </a>
+
+      <a routerLink="bangle" routerLinkActive="bg-b37800 text-white" [routerLinkActiveOptions]="{ exact: true }"
+        class="cursor-pointe whitespace-nowrap text-1c1c1c w-max block flex-1 py-3 px-3 text-center transition-colors font-kaisei text-sm sm:text-base md:text-lg lg:text-xl xl:text-[21px] rounded-lg">
+        Bangle Size Guide
+      </a>
+    </div>
+
+    <div class="mt-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

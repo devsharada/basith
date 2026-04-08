@@ -1,0 +1,69 @@
+<div class="w-full pt-5 lg:pt-6">
+  <h3
+    class="capitalize text-sm/tight sm:text-base/tight md:text-lg/tight lg:text-xl/tight xl:text-2xl/tight font-semibold text-08503f mb-5">
+    Ring size Guide</h3>
+  <p class="mb-3 text-1c1c1c space-y-2 text-xs/relaxed sm:text-sm/relaxed md:text-base/relaxed xl:text-[17px]/relaxed">
+    Finding the perfect ring size is essential to ensure both comfort and security. Your ring should slide smoothly onto
+    your finger and fit snugly enough to stay in place without feeling too tight. The most accurate way to determine
+    your ring size is by visiting a trusted jeweler. Professional jewelers use precise measuring tools and ring sizers
+    to identify your exact fit.</p>
+  <p class="text-1c1c1c space-y-2 text-xs/relaxed sm:text-sm/relaxed md:text-base/relaxed xl:text-[17px]/relaxed">
+    However, you can also measure your ring size easily at home with simple steps.</p>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-2.5 xl:gap-4 my-4 lg:my-8">
+    <div>
+      <img class="w-full" src="/assets/images/size/ring-size-guide1.png" alt="ring size guide">
+    </div>
+    <div>
+      <img class="w-full" src="/assets/images/size/ring-size-guide2.png" alt="ring size guide">
+    </div>
+    <div>
+      <img class="w-full" src="/assets/images/size/ring-size-guide3.png" alt="ring size guide">
+    </div>
+    <div>
+      <img class="w-full" src="/assets/images/size/ring-size-guide4.png" alt="ring size guide">
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <table class="w-full border border-d9d8d8 text-xs sm:text-sm lg:text-base">
+        <thead class="bg-f8f8f8 text-1c1c1c">
+          <tr>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Ring Size (Indian)</th>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Circumference (Inches)</th>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Circumference (MM)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of tableOne">
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.size }}</td>
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.inch }}</td>
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.mm }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <table class="w-full border border-d9d8d8 text-xs sm:text-sm lg:text-base">
+        <thead class="bg-f8f8f8 text-1c1c1c">
+          <tr>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Ring Size (Indian)</th>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Circumference (Inches)</th>
+            <th class="border border-d9d8d8 px-1.5 py-2 text-center font-medium">Circumference (MM)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of tableTwo">
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.size }}</td>
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.inch }}</td>
+            <td class="border border-d9d8d8 px-1.5 py-2 text-center">{{ row.mm }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

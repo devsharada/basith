@@ -1,0 +1,223 @@
+<div class="min-h-full flex items-center justify-center p-2 sm:p-4 bg-fec00f40 ">
+  <div
+    class="flex max-w-sm sm:max-w-lg md:max-w-6xl lg:max-w-8xl w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl relative">
+
+    <!-- Close Button -->
+    <div class="relative">
+      <button (click)="onClose()"
+        class="absolute top-3 right-3 z-50 p-2 text-gray-800 bg-white rounded-full shadow-lg hover:bg-gray-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="h-5 w-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Left Side: Image Grid -->
+    <div class="hidden lg:grid grid-cols-2 gap-3 p-3 lg:w-[45%] xl:w-[40%] bg-f8f8f8 border-r-2 border-b37800/10">
+
+      <!-- Image 1: Portrait (Pendant) -->
+      <div class="rounded-lg overflow-hidden border-3 border-b37800/30 shadow-md row-span-2">
+        <img src="/assets/images/login/login4.png" alt="Pendant" class="w-full h-full object-cover aspect-3/4">
+      </div>
+
+      <!-- Image 2: Rectangular (Snowflake Earrings) -->
+      <div class="rounded-lg overflow-hidden border-3 border-b37800/30 shadow-md">
+        <img src="/assets/images/login/login1.png" alt="Snowflake Earrings"
+          class="w-full h-full object-cover aspect-5/3">
+      </div>
+
+      <!-- Image 4: Portrait (Pearl Set) -->
+      <div class="rounded-lg overflow-hidden border-3 border-b37800/30 shadow-md row-span-2">
+        <img src="/assets/images/login/login2.png" alt="Pearl Set" class="w-full h-full object-cover aspect-3/4">
+      </div>
+      <!-- Image 3: Rectangular (Ribbon Earrings) -->
+      <div class="rounded-lg overflow-hidden border-3 border-b37800/30 shadow-md">
+        <img src="/assets/images/login/login3.png" alt="Ribbon Earrings" class="w-full h-full object-cover aspect-5/3">
+      </div>
+    </div>
+
+    <!-- Right Side: Main Content Panel (Padding already reduced in previous iteration) -->
+    <div
+      class="p-6 sm:p-8 md:p-10 lg:p-12 w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-center bg-white rounded-2xl md:rounded-3xl lg:rounded-l-none border-2 border-[#FFF3F2]">
+      <div class="text-center mb-6 sm:mb-8">
+        <h1 class=" text-2xl sm:text-3xl text-b37800 mb-1 sm:mb-2 tracking-wide">
+          Welcome! <br>Log in or create an account
+        </h1>
+      </div>
+
+      <!-- ----------------------------------------------------------- -->
+      <!-- LOGIN VIEW -->
+      <!-- ----------------------------------------------------------- -->
+      <div *ngIf="currentView === 'login'">
+
+        <!-- Mobile/Email Input and OTP Button (Reduced Spacing) -->
+        <div class="flex flex-col sm:flex-row mb-2">
+          <div
+            class="grow flex items-center border border-gray-300 rounded-lg sm:rounded-r-none p-2 sm:p-3 bg-white shadow-sm focus-within:border-b37800 focus-within:ring-1 focus-within:ring-b37800 mb-2 sm:mb-0">
+            <input type="text" [(ngModel)]="mobileNumber" placeholder="Mobile Number / Email Id"
+              class="grow outline-none text-sm sm:text-base text-gray-700  placeholder-gray-500 bg-transparent">
+          </div>
+          <button (click)="onRequestOtp()"
+            class="shrink-0 px-3 py-2 sm:px-4 sm:py-2 bg-b37800 text-white  text-sm sm:text-base rounded-lg sm:rounded-l-none hover:bg-opacity-90 transition duration-150 shadow-md cursor-pointer">
+            Request OTP
+          </button>
+        </div>
+        <div *ngIf="showMobileNumberError" class="text-red-500 text-xs text-center mb-3">
+          Please enter a valid mobile number (6+ digits).
+        </div>
+
+        <p class="my-5 sm:my-6 text-center text-gray-700  text-xs sm:text-sm">
+          Don't have an account?
+          <a (click)="switchToSignup()" class=" text-b37800 hover:underline font-medium cursor-pointer">Sign Up</a>
+        </p>
+
+        <!-- OR Divider (Reduced Spacing) -->
+        <div class="flex items-center my-3 sm:my-4">
+          <span class="grow border-t border-gray-300"></span>
+          <span class="mx-3 sm:mx-4 text-gray-500  text-xs">Or</span>
+          <span class="grow border-t border-gray-300"></span>
+        </div>
+
+        <!-- Social Login (Reduced Padding/Size) -->
+        <div class="text-center">
+          <button
+            class="inline-flex items-center justify-center p-2 border border-gray-300 rounded-lg shadow-sm bg-white hover:bg-gray-50 transition duration-150 w-full sm:w-auto min-w-50">
+            <!-- SVG for Google icon -->
+            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M21.8055 10.0415H21V10H12V14H17.6515C16.827 16.3285 14.6115 18 12 18C8.6865 18 6 15.3135 6 12C6 8.6865 8.6865 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C6.4775 2 2 6.4775 2 12C2 17.5225 6.4775 22 12 22C17.5225 22 22 17.5225 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z"
+                fill="#FFC107" />
+              <path
+                d="M3.15283 7.3455L6.43833 9.755C7.32733 7.554 9.48033 6 11.9998 6C13.5293 6 14.9208 6.577 15.9803 7.5195L18.8088 4.691C17.0228 3.0265 14.6338 2 11.9998 2C8.15883 2 4.82783 4.1685 3.15283 7.3455Z"
+                fill="#FF3D00" />
+              <path
+                d="M12.0002 22C14.5832 22 16.9302 21.0115 18.7047 19.404L15.6097 16.785C14.6057 17.5455 13.3577 18 12.0002 18C9.39916 18 7.19066 16.3415 6.35866 14.027L3.09766 16.5395C4.75266 19.778 8.11366 22 12.0002 22Z"
+                fill="#4CAF50" />
+              <path
+                d="M21.8055 10.0415H21V10H12V14H17.6515C17.2555 15.1185 16.536 16.083 15.608 16.7855L15.6095 16.7845L18.7045 19.4035C18.4855 19.6025 22 17 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z"
+                fill="#1976D2" />
+            </svg>
+            <span class="text-sm font-medium text-gray-700 ">Sign in with Google</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------------------- -->
+      <!-- SIGNUP VIEW -->
+      <!-- ----------------------------------------------------------- -->
+      <div *ngIf="currentView === 'signup'">
+
+        <!-- Name Input (Reduced Spacing) -->
+        <div class="mb-4">
+          <input type="text" [(ngModel)]="fullName" placeholder="Full Name"
+            class="w-full border border-gray-300 rounded-lg p-2 sm:p-3 bg-white shadow-sm focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none text-sm sm:text-base text-gray-700  placeholder-gray-500">
+        </div>
+
+        <!-- Mobile/Email Input and OTP Button (Reduced Spacing) -->
+        <div class="flex flex-col sm:flex-row mb-2">
+          <div
+            class="grow flex items-center border border-gray-300 rounded-lg sm:rounded-r-none p-2 sm:p-3 bg-white shadow-sm focus-within:border-b37800 focus-within:ring-1 focus-within:ring-b37800 mb-2 sm:mb-0">
+            <input type="text" [(ngModel)]="mobileNumber" placeholder="Mobile Number / Email Id"
+              class="grow outline-none text-sm sm:text-base text-gray-700  placeholder-gray-500 bg-transparent">
+          </div>
+          <button (click)="onRequestOtp()"
+            class="shrink-0 px-3 py-2 sm:px-4 sm:py-2 bg-b37800 text-white  text-sm sm:text-base rounded-lg sm:rounded-l-none hover:bg-opacity-90 transition duration-150 shadow-md">
+            Request OTP
+          </button>
+        </div>
+        <div *ngIf="showMobileNumberError" class="text-red-500 text-xs text-center mb-3">
+          Please enter a valid mobile number (6+ digits).
+        </div>
+
+        <p class="my-5 sm:my-6 text-center text-gray-700 text-xs sm:text-sm">
+          Already have an account?
+          <a (click)="switchToLogin()" class=" text-b37800 hover:underline font-medium cursor-pointer">Login</a>
+        </p>
+
+        <!-- OR Divider (Reduced Spacing) -->
+        <div class="flex items-center my-3 sm:my-4">
+          <span class="grow border-t border-gray-300"></span>
+          <span class="mx-3 sm:mx-4 text-gray-500  text-xs">Or</span>
+          <span class="grow border-t border-gray-300"></span>
+        </div>
+
+        <!-- Social Login (Reduced Padding/Size) -->
+        <div class="text-center">
+          <button
+            class="inline-flex items-center justify-center p-2 border border-gray-300 rounded-lg shadow-sm bg-white hover:bg-gray-50 transition duration-150 w-full sm:w-auto min-w-50">
+            <!-- SVG for Google icon -->
+             <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M21.8055 10.0415H21V10H12V14H17.6515C16.827 16.3285 14.6115 18 12 18C8.6865 18 6 15.3135 6 12C6 8.6865 8.6865 6 12 6C13.5295 6 14.921 6.577 15.9805 7.5195L18.809 4.691C17.023 3.0265 14.634 2 12 2C6.4775 2 2 6.4775 2 12C2 17.5225 6.4775 22 12 22C17.5225 22 22 17.5225 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z"
+                fill="#FFC107" />
+              <path
+                d="M3.15283 7.3455L6.43833 9.755C7.32733 7.554 9.48033 6 11.9998 6C13.5293 6 14.9208 6.577 15.9803 7.5195L18.8088 4.691C17.0228 3.0265 14.6338 2 11.9998 2C8.15883 2 4.82783 4.1685 3.15283 7.3455Z"
+                fill="#FF3D00" />
+              <path
+                d="M12.0002 22C14.5832 22 16.9302 21.0115 18.7047 19.404L15.6097 16.785C14.6057 17.5455 13.3577 18 12.0002 18C9.39916 18 7.19066 16.3415 6.35866 14.027L3.09766 16.5395C4.75266 19.778 8.11366 22 12.0002 22Z"
+                fill="#4CAF50" />
+              <path
+                d="M21.8055 10.0415H21V10H12V14H17.6515C17.2555 15.1185 16.536 16.083 15.608 16.7855L15.6095 16.7845L18.7045 19.4035C18.4855 19.6025 22 17 22 12C22 11.3295 21.931 10.675 21.8055 10.0415Z"
+                fill="#1976D2" />
+            </svg>
+            <span class="text-sm font-medium text-gray-700 ">Sign up with Google</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------------------- -->
+      <!-- OTP VERIFICATION VIEW -->
+      <!-- ----------------------------------------------------------- -->
+      <div *ngIf="currentView === 'otp'">
+        <h2 class="  text-xl sm:text-2xl text-gray-800 text-center mb-3 ">
+          Verify OTP
+        </h2>
+        <p class="text-gray-600 mt-1 mb-6 sm:mb-8 text-center text-sm">
+          We have sent a 6-digit code to **{{ selectedCountry.dial_code + mobileNumber }}**
+        </p>
+
+        <!-- OTP Input Fields (Reduced Size) -->
+        <div class="mb-6 sm:mb-8">
+          <div class="flex justify-center space-x-2">
+            <!-- For a real application, you'd use a single input with formatting or an array of inputs with logic -->
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+            <input type="text" maxlength="1"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-center text-lg border border-gray-300 rounded-md focus:border-b37800 focus:ring-1 focus:ring-b37800 outline-none">
+          </div>
+
+          <button (click)="onVerifyOtp()"
+            class=" cursor-pointer w-full mt-4 py-2 bg-b37800 text-white  text-base rounded-lg hover:bg-opacity-90 transition duration-150 shadow-md">
+            Verify
+          </button>
+        </div>
+
+        <p class="mb-4 sm:mb-5 text-center text-gray-700  text-xs sm:text-sm">
+          Didn't receive the OTP?
+          <a href="#" class=" text-b37800 hover:underline font-medium cursor-pointer">Resend</a>
+        </p>
+
+        <!-- Back Button -->
+        <p class="text-center text-gray-700  text-xs sm:text-sm">
+          <a (click)="handleBackToPreviousView()"
+            class=" text-gray-500 hover:text-b37800 hover:underline font-medium cursor-pointer flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-3 h-3 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Go Back
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

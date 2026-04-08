@@ -1,0 +1,54 @@
+<section class="w-full bg-white py-6 md:py-8 px-4 sm:px-6 lg:px-20">
+
+  <!-- Decorative Element -->
+  <div class="flex items-center justify-center space-x-1 sm:space-x-1.5 mb-2">
+    <!-- Left Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+    <!-- center flower -->
+    <img class="w-6.25 h-6.25 sm:w-7.5 sm:h-7.5" src="/assets/images/home/flower.png" alt="flower">
+    <!-- Right Line -->
+    <div class="bg-b37800 h-0.5 w-15 lg:w-30 cursor-pointer"></div>
+  </div>
+
+  <!-- Title and Subtitle -->
+  <div class="text-center">
+    <p class="text-1c1c1c capitalize text-sm md:text-base lg:text-xl xl:text-2xl font-medium mb-0.5">Ancient</p>
+    <h1
+      class="text-xl/tight sm:text-2xl/tight md:text-3xl/tight lg:text-4xl/tight xl:text-5xl/tight font-medium capitalize text-b37800">
+      Inspirations</h1>
+  </div>
+
+  <!-- image slider -->
+  <div class="mt-4 md:mt-6">
+    <div class="relative w-full flex items-center justify-center overflow-hidden">
+
+      <!-- Left Arrow -->
+      <button (click)="prev()"
+        class="cursor-pointer absolute left-6 z-40 w-8 h-8 rounded-full bg-white/80 backdrop-blur shadow flex items-center justify-center text-xl">
+        <svg width="11" height="17" viewBox="0 0 22 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20.807 3.43261C20.9905 3.23838 21.134 3.0099 21.2292 2.76022C21.3245 2.51053 21.3696 2.24453 21.3621 1.97741C21.3545 1.71028 21.2944 1.44726 21.1852 1.20336C21.076 0.959457 20.9198 0.739454 20.7256 0.55591C20.5314 0.372366 20.3029 0.228876 20.0532 0.133633C19.8035 0.0383893 19.5375 -0.00674285 19.2704 0.000813782C19.0033 0.00837041 18.7402 0.0684675 18.4963 0.177674C18.2524 0.28688 18.0324 0.443057 17.8489 0.637288L0.5561 18.9473C0.198981 19.325 0 19.8251 0 20.3449C0 20.8648 0.198981 21.3649 0.5561 21.7426L17.8489 40.0546C18.0312 40.2531 18.2512 40.4134 18.496 40.5262C18.7408 40.6389 19.0055 40.7019 19.2749 40.7115C19.5442 40.7211 19.8128 40.677 20.065 40.5819C20.3172 40.4868 20.5479 40.3425 20.7439 40.1575C20.9398 39.9725 21.0971 39.7503 21.2065 39.504C21.3159 39.2577 21.3752 38.9921 21.3811 38.7226C21.3869 38.4532 21.3392 38.1852 21.2407 37.9344C21.1421 37.6835 20.9947 37.4548 20.807 37.2614L4.8325 20.3449L20.807 3.43261Z"
+            fill="#B37800" />
+        </svg>
+      </button>
+
+      <!-- Cards -->
+      <div class="relative w-full max-w-7xl h-105 px-24 flex items-center justify-center">
+        <div *ngFor="let img of images; let i = index"
+          class="absolute transition-all duration-500 ease-in-out will-change-transform" [ngClass]="getPosition(i)">
+          <img [src]="img" class="w-52 h-72 object-cover rounded-xl shadow-xl bg-white" alt="Jewellery" />
+        </div>
+      </div>
+
+      <!-- Right Arrow -->
+      <button (click)="next()"
+        class="cursor-pointer absolute right-6 z-30 w-8 h-8 rounded-full bg-white/80 backdrop-blur shadow flex items-center justify-center text-xl">
+        <svg width="11" height="17" viewBox="0 0 22 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0.574387 3.43261C0.390842 3.23838 0.247353 3.0099 0.152109 2.76022C0.0568657 2.51053 0.011734 2.24453 0.019289 1.97741C0.0268459 1.71028 0.0869446 1.44726 0.19615 1.20336C0.305357 0.959457 0.461533 0.739454 0.655764 0.55591C0.849995 0.372366 1.07848 0.228876 1.32816 0.133633C1.57784 0.0383893 1.84384 -0.00674285 2.11097 0.000813782C2.3781 0.00837041 2.64112 0.0684675 2.88502 0.177674C3.12892 0.28688 3.34893 0.443057 3.53247 0.637288L20.8252 18.9473C21.1824 19.325 21.3813 19.8251 21.3813 20.3449C21.3813 20.8648 21.1824 21.3649 20.8252 21.7426L3.53247 40.0546C3.35014 40.2531 3.13018 40.4134 2.88538 40.5262C2.64059 40.6389 2.37582 40.7019 2.10647 40.7115C1.83713 40.7211 1.56856 40.677 1.31638 40.5819C1.06419 40.4868 0.833418 40.3425 0.637461 40.1575C0.441502 39.9725 0.284262 39.7503 0.174877 39.504C0.0654945 39.2577 0.00614357 38.9921 0.000276566 38.7226C-0.00559235 38.4532 0.0421371 38.1852 0.140694 37.9344C0.23925 37.6835 0.386669 37.4548 0.574387 37.2614L16.5488 20.3449L0.574387 3.43261Z"
+            fill="#B37800" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

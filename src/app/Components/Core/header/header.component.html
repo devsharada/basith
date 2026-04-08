@@ -1,0 +1,329 @@
+<!-- Main sticky container for the entire header complex -->
+<div class="sticky top-0 z-50">
+
+  <!-- Your Original Header (now with mobile toggle and updated icons) -->
+  <header class="w-full bg-white relative">
+    <nav class="w-full mx-auto px-2 xl:px-12">
+      <div class="flex items-center justify-between gap-2 py-2">
+
+        <!-- Mobile Menu Toggle -->
+        <button (click)="mobileOpen = !mobileOpen" class="lg:hidden cursor-pointer p-1 border rounded text-b37800">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Logo -->
+        <div class="pl-1.75 lg:pl-0">
+          <a routerLink="/">
+            <img class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-18 2xl:h-18 object-contain"
+              src="assets/images/logo/main-logo.png" alt="Brand Logo">
+          </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="hidden md:flex justify-center flex-1">
+          <div class="relative w-full max-w-xl 2xl:max-w-2xl mx-auto">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-b37800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </div>
+            <input type="search" placeholder="Search for jewelry, Gold coins..."
+              class="block w-full bg-white border rounded-full py-2 lg:py-2.5 pl-10 pr-10 text-sm text-gray-800 placeholder:text-818181 focus:outline-none focus:ring-1 focus:ring-b37800 focus:border-b37800 transition border-b37800">
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center space-x-4">
+              <button type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.5 8C14 8 16 10 16 12.5C16 15 14 17 11.5 17C9 17 7 15 7 12.5C7 10 9 8 11.5 8ZM11.5 9C10.5717 9 9.6815 9.36875 9.02513 10.0251C8.36875 10.6815 8 11.5717 8 12.5C8 13.4283 8.36875 14.3185 9.02513 14.9749C9.6815 15.6313 10.5717 16 11.5 16C12.4283 16 13.3185 15.6313 13.9749 14.9749C14.6313 14.3185 15 13.4283 15 12.5C15 11.5717 14.6313 10.6815 13.9749 10.0251C13.3185 9.36875 12.4283 9 11.5 9ZM5 5H7L9 3H14L16 5H18C18.7956 5 19.5587 5.31607 20.1213 5.87868C20.6839 6.44129 21 7.20435 21 8V17C21 17.7956 20.6839 18.5587 20.1213 19.1213C19.5587 19.6839 18.7956 20 18 20H5C4.20435 20 3.44129 19.6839 2.87868 19.1213C2.31607 18.5587 2 17.7956 2 17V8C2 7.20435 2.31607 6.44129 2.87868 5.87868C3.44129 5.31607 4.20435 5 5 5ZM9.41 4L7.41 6H5C4.46957 6 3.96086 6.21071 3.58579 6.58579C3.21071 6.96086 3 7.46957 3 8V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19H18C18.5304 19 19.0391 18.7893 19.4142 18.4142C19.7893 18.0391 20 17.5304 20 17V8C20 7.46957 19.7893 6.96086 19.4142 6.58579C19.0391 6.21071 18.5304 6 18 6H15.59L13.59 4H9.41Z"
+                    fill="#B37800" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Icons -->
+        <div class="flex items-center justify-end gap-x-1 sm:gap-x-1 lg:gap-x-5">
+          <!-- stores -->
+          <a routerLink="" class="relative cursor-pointer p-1 sm:p-2 lg:p-0">
+            <svg class="w-5 h-5 sm:size-6 lg:size-7" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.52066 12.9167V19.375C4.52066 23.0278 4.52066 24.8555 5.65604 25.9896C6.79012 27.125 8.61783 27.125 12.2707 27.125H18.0832M21.9582 9.69008C21.9578 10.5465 21.6173 11.3677 21.0114 11.9731C20.4056 12.5784 19.5841 12.9183 18.7277 12.918C17.8713 12.9176 17.0501 12.5771 16.4447 11.9712C15.8394 11.3654 15.4995 10.5439 15.4998 9.6875C15.4998 10.5439 15.1596 11.3653 14.554 11.9709C13.9484 12.5765 13.1271 12.9167 12.2707 12.9167C11.4142 12.9167 10.5929 12.5765 9.9873 11.9709C9.38171 11.3653 9.04149 10.5439 9.04149 9.6875C9.04149 11.47 7.52637 12.9167 5.65604 12.9167C4.64854 12.9167 3.74566 12.4982 3.12566 11.8317C2.06004 10.6898 2.74591 9.00808 3.63458 7.7345L4.13574 7.04992C5.27499 5.49346 5.84462 4.71458 6.67129 4.29479C7.49795 3.875 8.46283 3.875 10.3913 3.875L20.6084 3.87629C22.5368 3.87629 23.5017 3.87629 24.3284 4.29608C25.155 4.71587 25.7234 5.49475 26.8626 7.05121L27.3651 7.73708C28.2537 9.01067 28.9409 10.6924 27.874 11.8355C27.254 12.4995 26.3498 12.9192 25.3436 12.9192C23.4733 12.9192 21.9582 11.4726 21.9582 9.69008ZM23.2498 16.1458C20.753 16.1458 18.729 18.1311 18.729 20.5814C18.729 21.9829 19.2947 23.0717 20.425 24.0444C21.2206 24.7302 22.6699 26.2015 23.2498 27.125C23.8582 26.2208 25.2777 24.7302 26.076 24.0444C27.2062 23.0717 27.7707 21.9829 27.7707 20.5827C27.7707 18.1311 25.7466 16.1458 23.2498 16.1458Z"
+                stroke="#B37800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M23.25 20.6665H23.2616" stroke="#B37800" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <!-- Wishlist -->
+          <a routerLink="/wishlist" class="relative cursor-pointer p-1 sm:p-2 lg:p-0">
+            <svg viewBox="0 0 60 60" fill="none" class="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7">
+              <path
+                d="M53.7499 21.3455C53.7499 14.2781 48.0205 8.54883 40.9531 8.54883C36.3003 8.54883 32.2396 11.0403 29.9999 14.7538C27.76 11.0403 23.6995 8.54883 19.0466 8.54883C11.9792 8.54883 6.25 14.2781 6.25 21.3455C6.25 22.9611 6.562 24.5005 7.10825 25.9238C11.3396 38.0948 30 51.4507 30 51.4507C30 51.4507 48.6603 38.0948 52.8918 25.9238C53.438 24.5006 53.7499 22.9611 53.7499 21.3455Z"
+                stroke="#B37800" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span
+              class="absolute -top-1 -right-1 sm:top-0 sm:right-0 lg:-top-2 lg:-right-2 bg-b37800 text-white text-[8px] lg:text-xs rounded-full w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 flex items-center justify-center">
+              0
+            </span>
+          </a>
+
+          <button (click)="openCartSidebar()" class="relative cursor-pointer z-50 p-1 sm:p-2 lg:p-0"
+            aria-label="Open Cart">
+            <svg viewBox="0 0 60 60" fill="none" class="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7"
+              xmlns="http://www.w3.org/2000/svg">
+              <!-- SVG paths (Stroke color set to #B9445E as requested) -->
+              <path d="M4.33105 9.33789H14.3811L20.3529 35.4848H46.5842L52.6592 15.3285L15.6279 14.8035"
+                stroke="#B37800" stroke-width="2.5" />
+              <path
+                d="M48.4972 41.5781H20.316C19.9097 41.5871 19.5058 41.5137 19.1287 41.3623C18.7516 41.2109 18.409 40.9848 18.1217 40.6974C17.8343 40.4101 17.6081 40.0675 17.4568 39.6904C17.3054 39.3133 17.232 38.9094 17.241 38.5031C17.241 35.4844 20.3535 35.4844 20.3535 35.4844"
+                stroke="#B37800" stroke-width="2.5" />
+              <path
+                d="M23.3904 51.6939C25.2181 51.6939 26.6998 50.2123 26.6998 48.3846C26.6998 46.5569 25.2181 45.0752 23.3904 45.0752C21.5627 45.0752 20.0811 46.5569 20.0811 48.3846C20.0811 50.2123 21.5627 51.6939 23.3904 51.6939Z"
+                stroke="#B37800" stroke-width="2.5" />
+              <path
+                d="M43.1629 51.6939C44.9906 51.6939 46.4723 50.2123 46.4723 48.3846C46.4723 46.5569 44.9906 45.0752 43.1629 45.0752C41.3352 45.0752 39.8535 46.5569 39.8535 48.3846C39.8535 50.2123 41.3352 51.6939 43.1629 51.6939Z"
+                stroke="#B37800" stroke-width="2.5" />
+            </svg>
+
+            <span
+              class="absolute -top-1 -right-1 sm:top-0 sm:right-0 lg:-top-2 lg:-right-2 bg-b37800 text-white text-[8px] lg:text-xs rounded-full w-4 h-4  sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 flex items-center justify-center">
+              {{ cartItemCount }}
+            </span>
+          </button>
+
+          <!-- Profile Icon & Dropdown -->
+          <div class="relative">
+            <button (click)="toggleDropdown()" class="p-1 sm:p-2 lg:p-0 focus:outline-none cursor-pointer">
+              <svg viewBox="0 0 60 60" fill="none" class="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8">
+                <path
+                  d="M30 28.75C34.8325 28.75 38.75 24.8325 38.75 20C38.75 15.1675 34.8325 11.25 30 11.25C25.1675 11.25 21.25 15.1675 21.25 20C21.25 24.8325 25.1675 28.75 30 28.75Z"
+                  stroke="#B37800" stroke-width="2.5" />
+                <path
+                  d="M12.12 42.37C13.72 36.51 19.79 33.75 25.86 33.75H34.14C40.21 33.75 46.28 36.51 47.88 42.37C48.2 43.57 48.47 44.87 48.62 46.25C48.76 47.63 47.63 48.75 46.25 48.75H13.75C12.37 48.75 11.24 47.63 11.39 46.25C11.53 44.87 11.8 43.57 12.12 42.37Z"
+                  stroke="#B37800" stroke-width="2.5" />
+              </svg>
+            </button>
+
+            <!-- Dropdown -->
+            <div *ngIf="isDropdownOpen"
+              class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 border border-gray-100 ">
+              <button (click)="openLoginFromDropdown()"
+                class="flex items-center w-full px-4 py-2 text-left text-sm lg:text-base text-gray-700 hover:bg-gray-100 cursor-pointer">
+                Log in / Sign up
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Search Bar (from advanced example) -->
+    <div class="w-full bg-white mx-auto pt-1 pb-2 px-2 md:hidden border-b border-b37800/20">
+      <div class="relative">
+
+        <!-- 🔍 Search Icon (Left) -->
+        <div class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+          <!-- UPDATED: Changed text-brand-maroon/70 to use the specific color -->
+          <svg class="h-5 w-5 text-b37800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+        </div>
+
+        <!-- 📝 Input Field -->
+        <input type="search"
+          class="block w-full py-2 pl-8 pr-16 text-sm border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-b37800 transition"
+          placeholder="Search for jewelry, Gold coins..." required />
+
+        <!-- 🎤 Action Icons (Right) -->
+        <div class="absolute inset-y-0 right-0 pr-2 flex items-center space-x-3">
+          <!-- UPDATED: Changed text-brand-maroon/80 to use the specific color -->
+          <button type="button" class="text-b37800/80 hover:text-b37800 focus:outline-none">
+            <img src="https://cdn-icons-png.flaticon.com/128/7010/7010068.png" alt="Search Icon"
+              class="h-5 w-5 object-contain" />
+          </button>
+          <!-- UPDATED: Changed text-brand-maroon/80 to use the specific color -->
+          <button type="button" class="text-b37800/80 hover:text-b37800 focus:outline-none">
+            <img src="https://cdn-icons-png.flaticon.com/128/107/107737.png" alt="Mic Icon"
+              class="h-5 w-5 object-contain" />
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ******************************************** -->
+  <!-- NEW CATEGORY NAVIGATION BAR (FROM IMAGE) - SIMPLIFIED/MODIFIED ORIGINAL MEGA MENU BAR -->
+  <!-- This replaced the previous "simple" bar which was a duplicate. -->
+  <!-- ******************************************** -->
+  <!-- CATEGORY NAVIGATION BAR (Clear, Professional, and Elegant) -->
+  <nav class="w-full bg-white relative border-b border-b37800 hidden lg:block" (mouseleave)="onMegaMenuLeave()">
+    <!-- MAIN NAVBAR LINKS (Simple, High-Contrast Links) -->
+    <ul class="flex items-center justify-center container mx-auto text-base 2xl:text-lg font-semibold text-b37800">
+      <li *ngFor="let item of desktopMenu; let i = index"
+        class="relative pb-2.5 flex items-center px-4 xl:px-5 cursor-pointer group transition-colors duration-200"
+        [ngClass]="{
+        'font-semibold text-b37800': activeLinkIndex === i,
+        'hover:text-b37800': activeLinkIndex !== i
+      }" (mouseenter)="onDesktopHover(i)" (click)="activeLinkIndex = i">
+        <a class="flex items-center gap-x-2 transition-colors duration-200" [routerLink]="item.path"
+          (click)="hoverIndex = null">
+          <img *ngIf="item.iconImage" [src]="item.iconImage" alt="icon"
+            class="w-5 h-5 opacity-90 group-hover:opacity-100" />
+          <span class="capitalize tracking-wide">
+            {{ item.title }}
+          </span>
+        </a>
+        <!-- Clean, Professional Bottom Indicator -->
+        <span
+          class="absolute bottom-0 left-0 w-full h-0.5 bg-b37800 transform scale-x-0 transition-transform duration-300 ease-out origin-center"
+          [class.scale-x-100]="hoverIndex === i || activeLinkIndex === i"></span>
+      </li>
+    </ul>
+
+    <!-- DESKTOP MEGA MENU: COMPACT 5-COLUMN LINK FOCUS LAYOUT -->
+    <div *ngIf="hoverIndex !== null && mobileMenu[hoverIndex]?.children"
+      class="absolute left-0 right-0 top-full w-full bg-white border-t border-b37800 shadow-2xl z-50 py-5">
+      <div class="container mx-auto flex gap-6 px-6 lg:px-12">
+
+        <!-- COLUMN 1: CATEGORY LINKS (75% width) - NOW 5 ITEMS PER ROW -->
+        <div class="w-3/4">
+          <p class="text-[22px] capitalize font-kaisei font-bold text-b37800 mb-6 border-b-2 border-b37800/10 pb-2">
+            Explore {{ desktopMenu[hoverIndex].title }}
+          </p>
+
+          <!-- Grid for Sub-Category Groups: CHANGED TO 5 COLUMNS and REDUCED GAP -->
+          <div class="grid grid-cols-5 gap-x-5 gap-y-8">
+            <ng-container *ngFor="let group of mobileMenu[hoverIndex].children">
+              <div *ngIf="!group.isImageOnlyDesktop" class="group">
+
+                <!-- Main Sub-Category Title -->
+                <a routerLink="#" (click)="onMegaMenuLeave()"
+                  class="block text-lg font-bold text-gray-900 mb-3 hover:text-b37800 transition-colors">
+                  {{ group.title }}
+                </a>
+
+                <!-- Item List (Clean, Simple Links) -->
+                <ul class="space-y-1 border-l-2 border-gray-100 pl-3">
+                  <li *ngFor="let item of group.items.slice(0, 8)">
+                    <a routerLink="#" (click)="onMegaMenuLeave()"
+                      class="block text-sm text-gray-700 hover:text-b37800 transition-colors">
+                      {{ item.label }}
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- Explicit View All Link -->
+                <a routerLink="/all_products" (click)="onMegaMenuLeave()"
+                  class="mt-4 text-[13px] font-semibold text-b37800 hover:underline transition-colors flex items-center">
+                  View All &gt;
+                </a>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: PROMO IMAGE (25% width) - Clear, High-Impact Ad Spot -->
+        <div class="w-1/4" *ngIf="mobileMenu[hoverIndex]?.image as promoImage">
+          <p class="text-xl font-kaisei font-bold text-b37800 mb-4 capitalize tracking-wider">Featured</p>
+          <a routerLink="#"
+            class="block group bg-white rounded-lg shadow-2xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden border-4 border-b37800/10">
+            <img [src]="promoImage.src" [alt]="promoImage.alt"
+              class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+            <div class="p-4 text-center bg-gray-50 border-t border-gray-100">
+              <p class="text-xs font-bold uppercase text-b37800 mb-2 tracking-widest">Exclusive Collection</p>
+              <button
+                class="cursor-pointer w-full h-10 bg-b37800 text-white font-bold text-sm rounded-full hover:bg-[#e3a01b] transition-all duration-300 shadow-lg">
+                Shop Now
+              </button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- MOBILE ACCORDION MENU (Kept minimal and clean for usability) -->
+  <div *ngIf="mobileOpen" class="fixed inset-y-0 left-0 w-75 bg-white z-50 lg:hidden overflow-y-auto shadow-lg">
+    <!-- Header -->
+    <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200">
+      <span class="capitalize font-kaisei font-bold text-xl text-b37800">Menu</span>
+      <button (click)="mobileOpen = false" aria-label="Close menu"
+        class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-b37800 transition">
+        <svg class="w-6 h-6 text-b37800" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu Items -->
+    <nav class="divide-y divide-gray-100">
+      <div *ngFor="let item of mobileMenu; let i = index" class="border-b border-gray-50">
+
+        <!-- Accordion Type -->
+        <ng-container *ngIf="item.type === 'accordion'; else simpleLink">
+          <button (click)="toggle(i)"
+            class="w-full flex justify-between items-center py-2 px-5 font-medium text-base text-gray-800 capitalize hover:text-b37800 transition"
+            [attr.aria-expanded]="expandedIndex === i ? 'true' : 'false'">
+            {{ item.title }}
+            <svg class="w-5 h-5 text-gray-600 transform transition-transform duration-300"
+              [class.rotate-180]="expandedIndex === i" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div *ngIf="expandedIndex === i" class="bg-gray-50" style="overflow: hidden;">
+            <div *ngFor="let group of item.children; let j = index" class="border-t border-gray-100">
+
+              <ng-container *ngIf="!group.isImageOnlyDesktop">
+                <button (click)="toggleInner(j)"
+                  class="w-full flex justify-between items-center py-2 px-7 text-sm font-medium text-gray-700 capitalize hover:text-b37800 transition"
+                  [attr.aria-expanded]="expandedInnerIndex === j ? 'true' : 'false'">
+                  {{ group.title }}
+                  <svg class="w-4 h-4 text-gray-500 transform transition-transform duration-300"
+                    [class.rotate-180]="expandedInnerIndex === j" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                <ul *ngIf="expandedInnerIndex === j" class="pl-10 pb-3 space-y-2 bg-white">
+                  <li *ngFor="let subItem of group.items">
+                    <a [routerLink]="item.path" (click)="mobileOpen = false"
+                      class="block text-gray-600 text-sm py-1.5 hover:text-b37800 capitalize transition">
+                      {{ subItem.label }}
+                    </a>
+                  </li>
+                </ul>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Simple Link -->
+        <ng-template #simpleLink>
+          <a [routerLink]="item.path" (click)="mobileOpen = false"
+            class="block py-2 px-5 font-medium text-base text-gray-800 hover:text-b37800 capitalize transition">
+            {{ item.title }}
+          </a>
+        </ng-template>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- Cart Sidebar Component -->
+<app-cart-sidebar *ngIf="showCartSidebar" (close)="closeCartSidebar()"></app-cart-sidebar>
+<!-- auth for login modal -->
+<app-auth [show]="showLoginModal" (close)="closeLogin()"></app-auth>

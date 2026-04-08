@@ -1,0 +1,10 @@
+/* Default visibility for the chatbox */
+app-chatbox {
+  transition: opacity 0.3s ease-in-out; /* Smooth fade out effect */
+}
+
+/* Hide chatbox when it's near the footer */
+.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction */
+}

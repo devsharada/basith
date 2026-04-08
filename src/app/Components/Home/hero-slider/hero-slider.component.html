@@ -1,0 +1,13 @@
+<swiper-container
+  #swiperContainer
+  init="false"
+  class="w-full h-auto "
+>
+  <swiper-slide *ngFor="let item of heroSlider">
+    <a [routerLink]="item.link">
+      <div>
+        <img [src]="item.image" [alt]="item.name" class="w-full h-auto" />
+      </div>
+    </a>
+  </swiper-slide>
+</swiper-container>

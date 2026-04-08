@@ -1,0 +1,72 @@
+<div>
+  <!-- Order Header -->
+  <div class="flex justify-between items-center mb-6">
+    <!-- Status (Dispatch) -->
+    <div class="flex items-center space-x-2">
+      <div class="w-2.5 h-2.5 bg-b37800 rounded-full"></div>
+      <h2 class="text-base lg:text-lg xl:text-xl font-semibold text-gray-800">Dispatch</h2>
+    </div>
+
+    <!-- Order Number -->
+    <h3 class="text-base lg:text-lg xl:text-xl font-bold text-gray-800">{{ orderNumber }}</h3>
+  </div>
+
+  <!-- Main Order Content -->
+  <div class="flex flex-col lg:flex-row justify-between gap-2">
+
+    <!-- Left Section: Product List -->
+    <div class="w-full space-y-4 mb-6 lg:mb-0">
+      <ng-container *ngFor="let item of products">
+        <div class="flex items-start space-x-4">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 bg-pink-50 rounded-lg shrink-0 relative">
+            <img
+              [src]="item.imageUrl"
+              [alt]="item.name"
+              class="object-contain w-full h-full p-2"
+              style="background-color: #fcf6f7;"
+            >
+          </div>
+
+          <div class="flex flex-col pt-1">
+            <!-- Font size adjusted for mobile -->
+            <p class="text-sm md:text-base lg:text-lg font-semibold text-gray-800">{{ item.name }}</p>
+            <p class="text-xs sm:text-sm text-gray-500">Size : {{ item.size }}</p>
+            <p class="text-xs sm:text-sm text-gray-500">Metal : {{ item.metal }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Right Section: Order Summary and Actions -->
+    <div class="w-full lg:w-96 flex flex-col space-y-4">
+      <div class="border border-b37800 rounded-lg p-4 text-sm shadow-sm">
+        <!-- Order summary remains a 2-column grid, which is fine for its content size -->
+        <div class="grid grid-cols-2 gap-y-2 text-xs sm:text-sm md:text-base xl:text-[17px]">
+          <span class="text-gray-600">Pay</span>
+          <span class="text-right text-red-600 font-medium">{{ pay }}</span>
+
+          <span class="text-gray-600">Payment Method</span>
+          <span class="text-right text-red-600 font-medium">{{ paymentMethod }}</span>
+
+          <span class="text-gray-600">Status</span>
+          <span class="text-right text-red-600 font-medium">: {{ status }}</span>
+        </div>
+      </div>
+
+      <button
+        (click)="toggleTrackOrder()"
+        class="cursor-pointer bg-b37800 hover:bg-b37800/90 text-[#FDFDFD] font-medium py-3 px-4 rounded-md transition duration-150 ease-in-out shadow-md"
+      >
+        Track Order
+      </button>
+
+      <button class="cursor-pointer border border-b37800 hover:bg-ffeabe70 text-b37800 font-medium py-3 px-4 rounded-md transition duration-150 ease-in-out">
+        View Order Details
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showTrackOrder" class="transition-all duration-300 ease-in-out">
+  <app-track-order></app-track-order>
+</div>
